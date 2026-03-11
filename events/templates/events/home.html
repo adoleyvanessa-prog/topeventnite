@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TopEventNite</title>
+</head>
+
+<body>
+
+<h1>TopEventNite</h1>
+<h2>Events</h2>
+
+{% for event in events %}
+    <div>
+        <h3>{{ event.title }}</h3>
+        <p>Location: {{ event.location }}</p>
+        <p>Date: {{ event.start_datetime }}</p>
+        <p>Price: £{{ event.price }}</p>
+    </div>
+{% empty %}
+    <p>No events available yet.</p>
+{% endfor %}
+
+<br>
+
+<a href="/register/">Register</a>
+
+</body>
+</html>
