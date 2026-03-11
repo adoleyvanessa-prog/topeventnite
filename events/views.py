@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from .models import Event, Profile
 from .forms import RegisterForm
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseForbidden
 
 
 def home(request):
