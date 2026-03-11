@@ -77,7 +77,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'topeventnite_db',
         'USER': 'postgres',
-        'PASSWORD': 'your_postgres_password',
+        'PASSWORD': 'Adaugo004',
         'HOST': 'localhost',
         'PORT': '5432',
     }
