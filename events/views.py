@@ -1,9 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
-from .models import Event, Profile
-from .forms import RegisterForm
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
+from .models import Event, Profile
+from .forms import RegisterForm, EventForm
 
 
 def home(request):
@@ -56,3 +56,32 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect("home")
+
+
+def event_list(request):
+    events = Event.objects.order_by('start_datetime')
+    return render(request, 'events/event_list.html', {'events': events})
+
+
+def event_detail(request, event_id):
+    event = get_object_or_404(Event, id=event_id)
+    return render(request, 'events/event_detail.html', {'event': event})
+
+
+@login_required
+def create_event(request):
+    if request.user.profile.role != "organiser":
+        return HttpResponseForbidden("Only organisers can create events.")
+
+    if request.method == "POST":
+        form = EventForm(request.POST)
+
+        if form.is_valid():
+            event = form.save(commit=False)
+            event.organiser = request.user
+            event.save()
+            return redirect("event_detail", event_id=event.id)
+    else:
+        form = EventForm()
+
+    return render(request, "events/create_event.html", {"form": form})

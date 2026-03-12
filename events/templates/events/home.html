@@ -3,26 +3,41 @@
 <head>
     <title>TopEventNite</title>
 </head>
-
 <body>
 
 <h1>TopEventNite</h1>
-<h2>Events</h2>
+
+<p><a href="{% url 'event_list' %}">Browse Events</a></p>
+
+{% if user.is_authenticated %}
+    <p>Logged in as {{ user.username }}</p>
+
+    {% if user.profile.role == "organiser" %}
+        <p><a href="{% url 'create_event' %}">Create Event</a></p>
+    {% else %}
+        <p>Attendee account</p>
+    {% endif %}
+
+    <p><a href="{% url 'logout' %}">Logout</a></p>
+{% else %}
+    <p><a href="{% url 'login' %}">Login</a></p>
+    <p><a href="{% url 'register' %}">Register</a></p>
+{% endif %}
+
+<h2>Featured Events</h2>
 
 {% for event in events %}
     <div>
         <h3>{{ event.title }}</h3>
-        <p>Location: {{ event.location }}</p>
-        <p>Date: {{ event.start_datetime }}</p>
-        <p>Price: £{{ event.price }}</p>
+        <p>{{ event.location }}</p>
+        <p>{{ event.start_datetime }}</p>
+        <p>£{{ event.price }}</p>
+        <a href="{% url 'event_detail' event.id %}">View Details</a>
     </div>
+    <hr>
 {% empty %}
     <p>No events available yet.</p>
 {% endfor %}
-
-<br>
-
-<a href="/register/">Register</a>
 
 </body>
 </html>

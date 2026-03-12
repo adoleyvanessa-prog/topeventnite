@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ event.title }} | TopEventNite</title>
+</head>
+<body>
+
+<h1>{{ event.title }}</h1>
+
+<p><strong>Description:</strong> {{ event.description }}</p>
+<p><strong>Date & Time:</strong> {{ event.start_datetime }}</p>
+<p><strong>Location:</strong> {{ event.location }}</p>
+<p><strong>Venue:</strong> {{ event.venue }}</p>
+<p><strong>Capacity:</strong> {{ event.capacity }}</p>
+<p><strong>Price:</strong> £{{ event.price }}</p>
+<p><strong>Organiser:</strong> {{ event.organiser.username }}</p>
+
+<p><a href="{% url 'event_list' %}">Back to events</a></p>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Event | TopEventNite</title>
+</head>
+<body>
+
+<h1>Create Event</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Create Event</button>
+</form>
+
+<p><a href="{% url 'home' %}">Back to home</a></p>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Events | TopEventNite</title>
+</head>
+<body>
+
+<h1>All Events</h1>
+
+{% for event in events %}
+    <div>
+        <h2>{{ event.title }}</h2>
+        <p>{{ event.location }}</p>
+        <p>{{ event.start_datetime }}</p>
+        <p>£{{ event.price }}</p>
+        <a href="{% url 'event_detail' event.id %}">View Details</a>
+    </div>
+    <hr>
+{% empty %}
+    <p>No events available.</p>
+{% endfor %}
+
+<p><a href="{% url 'home' %}">Back to home</a></p>
+
+</body>
+</html>
