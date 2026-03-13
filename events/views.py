@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
-from .models import Event, Profile
+from .models import Event, Profile, Booking
 from .forms import RegisterForm, EventForm
 
 
@@ -85,3 +85,42 @@ def create_event(request):
         form = EventForm()
 
     return render(request, "events/create_event.html", {"form": form})
+
+
+@login_required
+def book_ticket(request, event_id):
+    if request.user.profile.role != "attendee":
+        return HttpResponseForbidden("Only attendees can book tickets.")
+
+    event = get_object_or_404(Event, id=event_id)
+
+    if Booking.objects.filter(user=request.user, event=event).exists():
+        return HttpResponseForbidden("You have already booked this event.")
+
+    if event.bookings.filter(status="confirmed").count() >= event.capacity:
+        return HttpResponseForbidden("This event is sold out.")
+
+    full_name = f"{request.user.first_name} {request.user.last_name}".strip()
+    if not full_name:
+        full_name = request.user.username
+
+    Booking.objects.create(
+        user=request.user,
+        event=event,
+        full_name=full_name,
+        email=request.user.email,
+    )
+
+    return redirect("my_bookings")
+
+
+@login_required
+def my_bookings(request):
+    if request.user.profile.role != "attendee":
+        return HttpResponseForbidden("Only attendees can view bookings.")
+
+    bookings = Booking.objects.filter(user=request.user).order_by('-created_at')
+
+    return render(request, "events/my_bookings.html", {
+        "bookings": bookings
+    })
