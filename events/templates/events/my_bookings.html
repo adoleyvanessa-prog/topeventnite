@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Bookings | TopEventNite</title>
+</head>
+<body>
+
+<h1>My Bookings</h1>
+
+{% for booking in bookings %}
+    <div>
+        <h2>{{ booking.event.title }}</h2>
+        <p>Date: {{ booking.event.start_datetime }}</p>
+        <p>Location: {{ booking.event.location }}</p>
+        <p>Booking Reference: {{ booking.booking_reference }}</p>
+        <p>Status: {{ booking.status }}</p>
+        <p>Payment Status: {{ booking.payment_status }}</p>
+    </div>
+    <hr>
+{% empty %}
+    <p>You have no bookings yet.</p>
+{% endfor %}
+
+<p><a href="{% url 'home' %}">Back to home</a></p>
+
+</body>
+</html>
