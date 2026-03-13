@@ -11,20 +11,26 @@
 <p><strong>Date & Time:</strong> {{ event.start_datetime }}</p>
 <p><strong>Location:</strong> {{ event.location }}</p>
 <p><strong>Venue:</strong> {{ event.venue }}</p>
-<p><strong>Capacity:</strong> {{ event.capacity }}</p>
+
+{% if remaining_spots > 0 %}
+    <p><strong>Remaining Spots:</strong> {{ remaining_spots }}</p>
+{% else %}
+    <p><strong>Sold Out</strong></p>
+{% endif %}
+
 <p><strong>Price:</strong> £{{ event.price }}</p>
 <p><strong>Organiser:</strong> {{ event.organiser.username }}</p>
 
-
 {% if user.is_authenticated and user.profile.role == "attendee" %}
-
-<form method="POST" action="{% url 'book_ticket' event.id %}">
-    {% csrf_token %}
-    <button type="submit">Book Ticket</button>
-</form>
-
+    {% if remaining_spots > 0 %}
+        <form method="POST" action="{% url 'book_ticket' event.id %}">
+            {% csrf_token %}
+            <button type="submit">Book Ticket</button>
+        </form>
+    {% else %}
+        <p>This event is sold out.</p>
+    {% endif %}
 {% endif %}
-
 
 <p><a href="{% url 'event_list' %}">Back to events</a></p>
 
