@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment | TopEventNite</title>
+</head>
+<body>
+
+<h1>Payment</h1>
+
+<h2>{{ booking.event.title }}</h2>
+
+<p><strong>Date:</strong> {{ booking.event.start_datetime }}</p>
+<p><strong>Location:</strong> {{ booking.event.location }}</p>
+<p><strong>Venue:</strong> {{ booking.event.venue }}</p>
+<p><strong>Ticket Price:</strong> £{{ booking.event.price }}</p>
+<p><strong>Quantity:</strong> 1</p>
+<p><strong>Total:</strong> £{{ booking.event.price }}</p>
+
+<h3>Attendee Information</h3>
+<p><strong>Full Name:</strong> {{ booking.full_name }}</p>
+<p><strong>Email:</strong> {{ booking.email }}</p>
+<p><strong>Phone:</strong> {{ booking.phone|default:"Not provided" }}</p>
+
+<h3>Payment Details</h3>
+<p>This is a simplified payment page for the project.</p>
+
+<form method="POST" action="{% url 'complete_payment' booking.id %}">
+    {% csrf_token %}
+    <button type="submit">Pay £{{ booking.event.price }}</button>
+</form>
+
+<p><a href="{% url 'event_detail' booking.event.id %}">Back to Event</a></p>
+
+</body>
+</html>

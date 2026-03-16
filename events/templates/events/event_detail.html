@@ -34,5 +34,15 @@
 
 <p><a href="{% url 'event_list' %}">Back to events</a></p>
 
+{% if user == event.organiser %}
+<p>
+<a href="{% url 'event_attendees' event.id %}">
+View Event Bookings
+</a>
+</p>
+{% endif %}
+
+<p><strong>Total Bookings:</strong> {{ total_bookings }}</p>
+
 </body>
 </html>

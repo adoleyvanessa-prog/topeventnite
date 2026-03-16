@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking Confirmed | TopEventNite</title>
+</head>
+<body>
+
+<h1>Booking Confirmed!</h1>
+
+<p>You have successfully booked a ticket for:</p>
+
+<h2>{{ booking.event.title }}</h2>
+
+<p><strong>Date:</strong> {{ booking.event.start_datetime }}</p>
+<p><strong>Location:</strong> {{ booking.event.location }}</p>
+
+<p><strong>Your Booking Reference:</strong></p>
+
+<h2>{{ booking.booking_reference }}</h2>
+
+<p>Please keep this reference for entry to the event.</p>
+
+<p>
+<a href="{% url 'my_bookings' %}">View My Bookings</a>
+</p>
+
+<p>
+<a href="{% url 'event_list' %}">Browse More Events</a>
+</p>
+
+</body>
+</html>

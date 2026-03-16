@@ -7,8 +7,18 @@ from .forms import RegisterForm, EventForm
 
 
 def home(request):
-    events = Event.objects.order_by('start_datetime')[:3]
-    return render(request, 'events/home.html', {'events': events})
+    featured_events = Event.objects.order_by('start_datetime')[:3]
+    organiser_events = None
+
+    if request.user.is_authenticated and request.user.profile.role == "organiser":
+        organiser_events = Event.objects.filter(
+            organiser=request.user
+        ).order_by('start_datetime')
+
+    return render(request, 'events/home.html', {
+        'featured_events': featured_events,
+        'organiser_events': organiser_events,
+    })
 
 
 def register_view(request):
@@ -71,7 +81,8 @@ def event_detail(request, event_id):
 
     return render(request, 'events/event_detail.html', {
         'event': event,
-        'remaining_spots': remaining_spots
+        'remaining_spots': remaining_spots,
+        'total_bookings': confirmed_bookings,
     })
 
 
@@ -104,21 +115,50 @@ def book_ticket(request, event_id):
     if Booking.objects.filter(user=request.user, event=event).exists():
         return HttpResponseForbidden("You have already booked this event.")
 
-    if event.bookings.filter(status="confirmed").count() >= event.capacity:
+    confirmed_bookings = event.bookings.filter(status="confirmed").count()
+    if confirmed_bookings >= event.capacity:
         return HttpResponseForbidden("This event is sold out.")
 
     full_name = f"{request.user.first_name} {request.user.last_name}".strip()
     if not full_name:
         full_name = request.user.username
 
-    Booking.objects.create(
+    booking = Booking.objects.create(
         user=request.user,
         event=event,
         full_name=full_name,
         email=request.user.email,
+        payment_status="pending",
+        status="cancelled",
     )
 
-    return redirect("my_bookings")
+    return redirect("payment_page", booking_id=booking.id)
+
+
+@login_required
+def payment_page(request, booking_id):
+    booking = get_object_or_404(Booking, id=booking_id)
+
+    if booking.user != request.user:
+        return HttpResponseForbidden("You cannot access this payment page.")
+
+    return render(request, "events/payment.html", {
+        "booking": booking
+    })
+
+
+@login_required
+def complete_payment(request, booking_id):
+    booking = get_object_or_404(Booking, id=booking_id)
+
+    if booking.user != request.user:
+        return HttpResponseForbidden("You cannot complete this payment.")
+
+    booking.payment_status = "paid"
+    booking.status = "confirmed"
+    booking.save()
+
+    return redirect("booking_confirmation", booking_id=booking.id)
 
 
 @login_required
@@ -129,5 +169,33 @@ def my_bookings(request):
     bookings = Booking.objects.filter(user=request.user).order_by('-created_at')
 
     return render(request, "events/my_bookings.html", {
+        "bookings": bookings
+    })
+
+
+@login_required
+def booking_confirmation(request, booking_id):
+
+    booking = get_object_or_404(Booking, id=booking_id)
+
+    if booking.user != request.user:
+        return HttpResponseForbidden("You cannot view this booking.")
+
+    return render(request, "events/booking_confirmation.html", {
+        "booking": booking
+    })
+
+
+@login_required
+def event_attendees(request, event_id):
+    event = get_object_or_404(Event, id=event_id)
+
+    if event.organiser != request.user:
+        return HttpResponseForbidden("You cannot view this event's bookings.")
+
+    bookings = Booking.objects.filter(event=event).order_by('-created_at')
+
+    return render(request, "events/event_attendees.html", {
+        "event": event,
         "bookings": bookings
     })

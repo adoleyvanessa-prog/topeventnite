@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendees | TopEventNite</title>
+</head>
+<body>
+
+<h1>Organiser's Event Bookings</h1>
+
+<h2>{{ event.title }}</h2>
+
+<p>
+<strong>Date:</strong> {{ event.start_datetime }} <br>
+<strong>Location:</strong> {{ event.location }} <br>
+<strong>Venue:</strong> {{ event.venue }}
+</p>
+
+<table border="1" cellpadding="10">
+<tr>
+<th>Attendee Name</th>
+<th>Booking Reference</th>
+<th>Email</th>
+</tr>
+
+{% for booking in bookings %}
+<tr>
+<td>{{ booking.full_name }}</td>
+<td>{{ booking.booking_reference }}</td>
+<td>{{ booking.email }}</td>
+</tr>
+{% empty %}
+<tr>
+<td colspan="3">No bookings yet</td>
+</tr>
+{% endfor %}
+
+</table>
+
+<br>
+
+<a href="{% url 'event_detail' event.id %}">Back to Event</a>
+
+</body>
+</html>
