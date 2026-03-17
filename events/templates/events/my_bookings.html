@@ -15,6 +15,8 @@
         <p>Booking Reference: {{ booking.booking_reference }}</p>
         <p>Status: {{ booking.status }}</p>
         <p>Payment Status: {{ booking.payment_status }}</p>
+
+        <p><a href="{% url 'cancel_booking' booking.id %}">Cancel Booking</a></p>
     </div>
     <hr>
 {% empty %}

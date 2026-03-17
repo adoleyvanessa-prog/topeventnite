@@ -20,7 +20,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ek6+n_@b65h2zdpnph$4b^-s^1xg#r6lt46=^(^uz9e65r6r$&'
+SECRET_KEY = (
+    'django-insecure-ek6+n_@b65h2zdpnph$4b^-s^1xg#r6lt46=^(^uz9e65r6r$&'
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -90,16 +92,20 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation.'
+                'UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation.'
+                'MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.'
+                'CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.'
+                'NumericPasswordValidator',
     },
 ]
 
@@ -120,3 +126,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STRIPE_PUBLIC_KEY = (
+    "pk_test_51TBwV5H282kWbkNkBHhxKa3HUGVx0S7oBmJACedRYZaOSkXKhd90"
+    "osuBJrMj1cmCzMNjFs1dE0u7XSt5eATugVBy00CbRYraE5"
+)
+STRIPE_SECRET_KEY = (
+    "sk_test_51TBwV5H282kWbkNkraOqxILkeC2kna6KNRosOgkspzDBXfKX6oTNu"
+    "rW7quig7bjHAEE5mdEdUKS1x2MKPqVw2Bg1009dt8CSJs"
+)

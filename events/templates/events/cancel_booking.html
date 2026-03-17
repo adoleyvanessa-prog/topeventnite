@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cancel Booking | TopEventNite</title>
+</head>
+<body>
+
+<h1>Cancel Booking</h1>
+
+<p>Are you sure you want to cancel your booking for <strong>{{ booking.event.title }}</strong>?</p>
+
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit">Yes, Cancel Booking</button>
+</form>
+
+<p><a href="{% url 'my_bookings' %}">Back to my bookings</a></p>
+
+</body>
+</html>

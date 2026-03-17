@@ -35,11 +35,17 @@
 <p><a href="{% url 'event_list' %}">Back to events</a></p>
 
 {% if user == event.organiser %}
-<p>
-<a href="{% url 'event_attendees' event.id %}">
-View Event Bookings
-</a>
-</p>
+    <p>
+        <a href="{% url 'edit_event' event.id %}">Edit Event</a>
+    </p>
+
+    <p>
+        <a href="{% url 'delete_event' event.id %}">Delete Event</a>
+    </p>
+
+    <p>
+        <a href="{% url 'event_attendees' event.id %}">View Event Bookings</a>
+    </p>
 {% endif %}
 
 <p><strong>Total Bookings:</strong> {{ total_bookings }}</p>

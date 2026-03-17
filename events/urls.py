@@ -11,9 +11,27 @@ urlpatterns = [
     path('create-event/', views.create_event, name='create_event'),
     path('book/<int:event_id>/', views.book_ticket, name='book_ticket'),
     path('my-bookings/', views.my_bookings, name='my_bookings'),
-    path("booking-confirmation/<int:booking_id>/", views.booking_confirmation, 
-         name="booking_confirmation"),
-    path("events/<int:event_id>/attendees/", views.event_attendees, name="event_attendees"),
-    path("payment/<int:booking_id>/", views.payment_page, name="payment_page"),
-    path("payment/<int:booking_id>/complete/", views.complete_payment, name="complete_payment"),
+    path(
+        'booking-confirmation/<int:booking_id>/',
+        views.booking_confirmation,
+        name='booking_confirmation',
+    ),
+    path(
+        'events/<int:event_id>/attendees/',
+        views.event_attendees,
+        name='event_attendees',
+    ),
+    path('payment/success/', views.payment_success, name='payment_success'),
+    path('payment/cancel/', views.payment_cancel, name='payment_cancel'),
+    path("events/<int:event_id>/edit/", views.edit_event, name="edit_event"),
+    path(
+        "events/<int:event_id>/delete/",
+        views.delete_event,
+        name="delete_event",
+    ),
+    path(
+        "bookings/<int:booking_id>/cancel/",
+        views.cancel_booking,
+        name="cancel_booking",
+    ),
 ]

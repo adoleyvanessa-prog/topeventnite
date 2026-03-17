@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Event | TopEventNite</title>
+</head>
+<body>
+
+<h1>Edit Event</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save Changes</button>
+</form>
+
+<p><a href="{% url 'event_detail' event.id %}">Back to event</a></p>
+
+</body>
+</html>
