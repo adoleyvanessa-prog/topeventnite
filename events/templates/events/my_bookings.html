@@ -2,10 +2,86 @@
 <html>
 <head>
     <title>My Bookings | TopEventNite</title>
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.65);
+        }
+
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 420px;
+            margin: 12% auto;
+            padding: 24px;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .modal-buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .close-btn,
+        .confirm-btn {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .close-btn {
+            background: #ccc;
+        }
+
+        .confirm-btn {
+            background: #c62828;
+            color: white;
+        }
+
+        #toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 2000;
+}
+
+.toast {
+  background: #1e1e1e;
+  color: white;
+  padding: 12px 18px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeIn 0.4s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+    </style>
 </head>
 <body>
 
 <h1>My Bookings</h1>
+{% if messages %}
+  <div id="toast-container">
+    {% for message in messages %}
+      <div class="toast">{{ message }}</div>
+    {% endfor %}
+  </div>
+{% endif %}
 
 {% for booking in bookings %}
     <div>
@@ -16,7 +92,11 @@
         <p>Status: {{ booking.status }}</p>
         <p>Payment Status: {{ booking.payment_status }}</p>
 
-        <p><a href="{% url 'cancel_booking' booking.id %}">Cancel Booking</a></p>
+        <p>
+            <button type="button" onclick="openModal('{{ booking.id }}', '{{ booking.event.title|escapejs }}')">
+                Cancel Booking
+            </button>
+        </p>
     </div>
     <hr>
 {% empty %}
@@ -24,6 +104,50 @@
 {% endfor %}
 
 <p><a href="{% url 'home' %}">Back to home</a></p>
+
+<div id="cancelModal" class="modal">
+    <div class="modal-content">
+        <h2>Cancel Booking</h2>
+        <p id="modalText">Are you sure?</p>
+
+        <form id="cancelForm" method="POST">
+            {% csrf_token %}
+            <div class="modal-buttons">
+                <button type="button" class="close-btn" onclick="closeModal()">Keep Booking</button>
+                <button type="submit" class="confirm-btn">Yes, Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function openModal(bookingId, eventTitle) {
+        document.getElementById("cancelModal").style.display = "block";
+        document.getElementById("modalText").textContent =
+            `Are you sure you want to cancel your booking for ${eventTitle}?`;
+        document.getElementById("cancelForm").action = `/bookings/${bookingId}/cancel/`;
+    }
+
+    function closeModal() {
+        document.getElementById("cancelModal").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        const modal = document.getElementById("cancelModal");
+        if (event.target === modal) {
+            closeModal();
+        }
+    }
+
+    setTimeout(() => {
+    const toasts = document.querySelectorAll(".toast");
+    toasts.forEach(toast => {
+      toast.style.opacity = "0";
+      toast.style.transition = "0.5s";
+      setTimeout(() => toast.remove(), 500);
+    });
+  }, 3000);
+</script>
 
 </body>
 </html>

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from django.http import HttpResponseForbidden
 from .models import Event, Profile, Booking
 from .forms import RegisterForm, EventForm
@@ -304,10 +305,11 @@ def cancel_booking(request, booking_id):
     booking = get_object_or_404(Booking, id=booking_id)
 
     if booking.user != request.user:
-        return HttpResponseForbidden("You cannot cancel this booking.")
+        return HttpResponseForbidden("Not allowed")
 
     if request.method == "POST":
         booking.delete()
+        messages.success(request, "Booking cancelled successfully.")
         return redirect("my_bookings")
 
     return render(request, "events/cancel_booking.html", {
