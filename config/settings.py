@@ -8,10 +8,7 @@ import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.getenv(
-    "SECRET_KEY",
-    "dev-secret-key-only"
-)
+SECRET_KEY = os.getenv("SECRET_KEY", "dev-secret-key-only")
 
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
@@ -101,13 +98,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-STRIPE_PUBLIC_KEY = (
-    "pk_test_51TBwV5H282kWbkNkBHhxKa3HUGVx0S7oBmJACedRYZaOSkXKhd90"
-    "osuBJrMj1cmCzMNjFs1dE0u7XSt5eATugVBy00CbRYraE5"
-)
-STRIPE_SECRET_KEY = (
-    "sk_test_51TBwV5H282kWbkNkraOqxILkeC2kna6KNRosOgkspzDBXfKX6oTNu"
-    "rW7quig7bjHAEE5mdEdUKS1x2MKPqVw2Bg1009dt8CSJs"
-)
+STRIPE_PUBLIC_KEY = os.getenv("STRIPE_PUBLIC_KEY", "")
+STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY", "")
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
