@@ -34,6 +34,11 @@ class Event(models.Model):
         decimal_places=2,
         validators=[MinValueValidator(0)]
     )
+    event_image = models.ImageField(
+        upload_to='event_images/',
+        blank=True,
+        null=True
+    )
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -65,7 +70,9 @@ class Booking(models.Model):
     full_name = models.CharField(max_length=150)
     email = models.EmailField()
     phone = models.CharField(max_length=20, blank=True)
-    booking_reference = models.CharField(max_length=20, unique=True, blank=True)
+    booking_reference = models.CharField(
+        max_length=20, unique=True, blank=True
+    )
     payment_status = models.CharField(
         max_length=20,
         choices=PAYMENT_STATUS_CHOICES,
