@@ -106,7 +106,6 @@ def create_event(request):
 
     if request.method == "POST":
         form = EventForm(request.POST, request.FILES)
-
         if form.is_valid():
             event = form.save(commit=False)
             event.organiser = request.user
@@ -276,12 +275,12 @@ def edit_event(request, event_id):
         return HttpResponseForbidden("You cannot edit this event.")
 
     if request.method == "POST":
-        form = EventForm(request.POST, instance=event)
+        form = EventForm(request.POST, request.FILES, instance=event)
         if form.is_valid():
             form.save()
             return redirect("event_detail", event_id=event.id)
     else:
-        form = EventForm(request.POST, request.FILES, instance=event)
+        form = EventForm(instance=event)
 
     return render(request, "events/edit_event.html", {
         "form": form,
