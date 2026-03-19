@@ -13,17 +13,22 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 def home(request):
     featured_events = Event.objects.order_by('start_datetime')[:3]
-    organiser_events = None
+    organiser_events = []
+    user_role = None
 
-    if (request.user.is_authenticated and
-            request.user.profile.role == "organiser"):
-        organiser_events = Event.objects.filter(
-            organiser=request.user
-        ).order_by('start_datetime')
+    if request.user.is_authenticated:
+        profile = Profile.objects.filter(user=request.user).first()
+        if profile:
+            user_role = profile.role
+            if user_role == "organiser":
+                organiser_events = Event.objects.filter(
+                    organiser=request.user
+                ).order_by('start_datetime')
 
     return render(request, 'events/home.html', {
         'featured_events': featured_events,
         'organiser_events': organiser_events,
+        'user_role': user_role,
     })
 
 
