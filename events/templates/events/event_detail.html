@@ -21,7 +21,7 @@
 <p><strong>Price:</strong> £{{ event.price }}</p>
 <p><strong>Organiser:</strong> {{ event.organiser.username }}</p>
 
-{% if user.is_authenticated and user.profile.role == "attendee" %}
+{% if user.is_authenticated and user_role == "attendee" %}
     {% if remaining_spots > 0 %}
         <form method="POST" action="{% url 'book_ticket' event.id %}">
             {% csrf_token %}
@@ -49,6 +49,8 @@
 {% endif %}
 {% if event.event_image %}
     <img src="{{ event.event_image.url }}" alt="{{ event.title }}">
+    <p>Image field: {{ event.event_image }}</p>
+    <p>Image URL: {{ event.event_image.url }}</p>
 {% endif %}
 
 <p><strong>Total Bookings:</strong> {{ total_bookings }}</p>
