@@ -23,8 +23,8 @@ class RegisterForm(forms.ModelForm):
             'email',
             'password'
         ]
-      
-        
+
+
 class EventForm(forms.ModelForm):
     class Meta:
         model = Event
@@ -36,6 +36,7 @@ class EventForm(forms.ModelForm):
             'venue',
             'capacity',
             'price',
+            'event_image',
         ]
         widgets = {
             'start_datetime': DateTimeInput(attrs={'type': 'datetime-local'}),

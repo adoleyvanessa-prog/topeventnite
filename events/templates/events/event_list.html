@@ -10,6 +10,9 @@
 {% for event in events %}
     <div>
         <h2>{{ event.title }}</h2>
+        {% if event.event_image %}
+    <img src="{{ event.event_image.url }}" alt="{{ event.title }}">
+    {% endif %}
         <p>{{ event.location }}</p>
         <p>{{ event.start_datetime }}</p>
         <p>£{{ event.price }}</p>
@@ -19,9 +22,6 @@
 {% empty %}
     <p>No events available.</p>
 {% endfor %}
-{% if event.event_image %}
-    <img src="{{ event.event_image.url }}" alt="{{ event.title }}">
-{% endif %}
 
 <p><a href="{% url 'home' %}">Back to home</a></p>
 
