@@ -82,7 +82,7 @@ def logout_view(request):
 
 
 def event_list(request):
-    events = Event.objects.order_by('start_datetime')
+    events = Event.objects.all()
     return render(request, 'events/event_list.html', {'events': events})
 
 
