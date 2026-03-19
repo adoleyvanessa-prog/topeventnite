@@ -19,6 +19,9 @@
 {% empty %}
     <p>No events available.</p>
 {% endfor %}
+{% if event.event_image %}
+    <img src="{{ event.event_image.url }}" alt="{{ event.title }}">
+{% endif %}
 
 <p><a href="{% url 'home' %}">Back to home</a></p>
 

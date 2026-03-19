@@ -105,7 +105,7 @@ def create_event(request):
         return HttpResponseForbidden("Only organisers can create events.")
 
     if request.method == "POST":
-        form = EventForm(request.POST)
+        form = EventForm(request.POST, request.FILES)
 
         if form.is_valid():
             event = form.save(commit=False)
@@ -281,7 +281,7 @@ def edit_event(request, event_id):
             form.save()
             return redirect("event_detail", event_id=event.id)
     else:
-        form = EventForm(instance=event)
+        form = EventForm(request.POST, request.FILES, instance=event)
 
     return render(request, "events/edit_event.html", {
         "form": form,

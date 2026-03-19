@@ -47,6 +47,9 @@
         <a href="{% url 'event_attendees' event.id %}">View Event Bookings</a>
     </p>
 {% endif %}
+{% if event.event_image %}
+    <img src="{{ event.event_image.url }}" alt="{{ event.title }}">
+{% endif %}
 
 <p><strong>Total Bookings:</strong> {{ total_bookings }}</p>
 
