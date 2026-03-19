@@ -8,19 +8,19 @@
 <h1>All Events</h1>
 
 {% for event in events %}
-    <div>
-        <h2>{{ event.title }}</h2>
+    <div style="border: 1px solid #ddd; padding: 16px; margin-bottom: 20px; border-radius: 10px; width: 300px;">
+        
         {% if event.event_image %}
-    <img src="{{ event.event_image.url }}" alt="{{ event.title }}">
-    {% endif %}
+            <img src="{{ event.event_image.url }}" alt="{{ event.title }}" style="width: 100%; border-radius: 8px;">
+        {% endif %}
+
+        <h2>{{ event.title }}</h2>
         <p>{{ event.location }}</p>
         <p>{{ event.start_datetime }}</p>
-        <p>£{{ event.price }}</p>
+        <p><strong>£{{ event.price }}</strong></p>
+
         <a href="{% url 'event_detail' event.id %}">View Details</a>
     </div>
-    <hr>
-{% empty %}
-    <p>No events available.</p>
 {% endfor %}
 
 <p><a href="{% url 'home' %}">Back to home</a></p>
