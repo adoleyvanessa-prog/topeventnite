@@ -293,15 +293,13 @@ def delete_event(request, event_id):
     event = get_object_or_404(Event, id=event_id)
 
     if event.organiser != request.user:
-        return HttpResponseForbidden("You cannot delete this event.")
+        return HttpResponseForbidden()
 
     if request.method == "POST":
         event.delete()
-        return redirect("home")
+        return redirect("home")  # or event_list
 
-    return render(request, "events/delete_event.html", {
-        "event": event
-    })
+    return redirect("event_detail", event_id=event.id)
 
 
 @login_required
