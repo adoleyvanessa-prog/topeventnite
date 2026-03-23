@@ -92,10 +92,17 @@ def event_detail(request, event_id):
     confirmed_bookings = event.bookings.filter(status="confirmed").count()
     remaining_spots = event.capacity - confirmed_bookings
 
+    user_role = None
+    if request.user.is_authenticated:
+        profile = Profile.objects.filter(user=request.user).first()
+        if profile:
+            user_role = profile.role
+
     return render(request, 'events/event_detail.html', {
         'event': event,
         'remaining_spots': remaining_spots,
         'total_bookings': confirmed_bookings,
+        'user_role': user_role,
     })
 
 
