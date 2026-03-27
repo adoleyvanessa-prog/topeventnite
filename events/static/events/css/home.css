@@ -93,7 +93,7 @@
 
 .hero-section {
     position: relative;
-    min-height: 540px;
+    min-height: 430px;
     overflow: hidden;
     border-bottom: 1px solid rgba(255, 255, 255, 0.18);
 }
@@ -119,68 +119,67 @@
     left: 0;
     right: 0;
     bottom: 0;
-    min-height: 165px;
-    background: rgba(0, 0, 0, 0.56);
+    min-height: 105px;
+    background: rgba(0, 0, 0, 0.58);
     z-index: 1;
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
-    min-height: 540px;
+    min-height: 430px;
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
     gap: 2rem;
-    padding: 0 1.5rem 2rem;
+    padding: 0 1.5rem 1.25rem;
 }
 
 .hero-left {
-    max-width: 440px;
+    max-width: 320px;
 }
 
 .hero-left h1 {
-    font-size: clamp(2.4rem, 4.8vw, 4.35rem);
+    font-size: clamp(1.7rem, 3vw, 2.6rem);
     font-weight: 800;
-    line-height: 1.02;
+    line-height: 1.05;
     text-shadow: 0 4px 15px rgba(0, 0, 0, 0.45);
 }
 
 .hero-right {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: flex-end;
     width: 100%;
-    max-width: 520px;
+    max-width: 430px;
 }
 
 .hero-pill {
     background: #f3f3f3;
     color: #111111;
     width: 100%;
-    max-width: 500px;
-    min-height: 150px;
-    padding: 2rem 2.5rem;
+    max-width: 390px;
+    min-height: 105px;
+    padding: 1.4rem 2rem;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    border-top-left-radius: 60px;
-    border-bottom-left-radius: 60px;
+    border-top-left-radius: 55px;
+    border-bottom-left-radius: 55px;
     border-top-right-radius: 999px;
     border-bottom-right-radius: 999px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
 }
 
 .hero-pill p {
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     font-weight: 800;
     line-height: 1.2;
-    max-width: 280px;
+    max-width: 220px;
 }
 
 .home-main {
-    padding: 1.8rem 1.5rem 3rem;
-    min-height: 340px;
+    padding: 1.2rem 1.5rem 2.2rem;
 }
 
 .event-grid {
