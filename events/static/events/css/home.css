@@ -24,7 +24,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1.25rem;
+    gap: 1rem;
     padding: 0.9rem 1.25rem;
 }
 
@@ -69,7 +69,7 @@
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 1.25rem;
+    gap: 1rem;
     flex-wrap: wrap;
     justify-content: flex-end;
 }
@@ -112,7 +112,7 @@
     z-index: 2;
     min-height: 460px;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
     gap: 2rem;
     padding: 2rem 1.25rem 2rem;
@@ -159,18 +159,20 @@
 
 .event-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 300px));
+    justify-content: center;
+    gap: 2rem;
 }
 
 .event-card {
     position: relative;
-    min-height: 260px;
+    min-height: 300px;
     border-radius: 28px;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.8);
     background: #1a1a1a;
-    isolation: isolate;
+    width: 100%;
+    max-width: 300px;
 }
 
 .event-card-image,
@@ -184,9 +186,9 @@
 
 .event-card-image-placeholder {
     background:
-        radial-gradient(circle at top, rgba(255, 140, 0, 0.35), transparent 35%),
-        radial-gradient(circle at center, rgba(255, 0, 140, 0.18), transparent 40%),
-        linear-gradient(135deg, #12002f 0%, #1c003d 40%, #3d0a00 100%);
+        radial-gradient(circle at top, rgba(255, 170, 0, 0.35), transparent 40%),
+        radial-gradient(circle at bottom, rgba(255, 0, 120, 0.2), transparent 50%),
+        linear-gradient(135deg, #0a0030 0%, #1a003d 40%, #3d0a00 100%);
 }
 
 .event-card-overlay {
@@ -234,10 +236,10 @@
     min-height: 40px;
     padding: 0.7rem 1.25rem;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.72);
-    color: #ffffff;
+    background: rgba(255, 255, 255, 0.9);
+    color: #000;
     font-size: 0.9rem;
-    font-weight: 600;
+    font-weight: 700;
     backdrop-filter: blur(8px);
 }
 
