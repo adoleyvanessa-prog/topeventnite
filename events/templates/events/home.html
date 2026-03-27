@@ -50,6 +50,7 @@
         </video>
 
         <div class="hero-overlay"></div>
+        <div class="hero-bottom-band"></div>
 
         <div class="hero-content">
             <div class="hero-left">
@@ -97,9 +98,11 @@
 
                                 <div class="event-card-content">
                                     <h3>{{ event.title }}</h3>
-                                    <p>{{ event.start_datetime|date:"jS F Y" }}</p>
-                                    <p>{{ event.location }}</p>
-                                    <p>£{{ event.price }}</p>
+                                    <div class="event-card-meta">
+                                        <p>{{ event.start_datetime|date:"jS F Y" }}</p>
+                                        <p>{{ event.location }}</p>
+                                        <p>£{{ event.price }}</p>
+                                    </div>
 
                                     <div class="event-card-actions">
                                         <a href="{% url 'event_detail' event.id %}" class="card-btn">View Details</a>
@@ -131,9 +134,11 @@
 
                                 <div class="event-card-content">
                                     <h3>{{ event.title }}</h3>
-                                    <p>{{ event.start_datetime|date:"jS F Y" }}</p>
-                                    <p>{{ event.location }}</p>
-                                    <p>£{{ event.price }}</p>
+                                    <div class="event-card-meta">
+                                        <p>{{ event.start_datetime|date:"jS F Y" }}</p>
+                                        <p>{{ event.location }}</p>
+                                        <p>£{{ event.price }}</p>
+                                    </div>
 
                                     <div class="event-card-actions">
                                         {% if user.is_authenticated %}
@@ -179,7 +184,7 @@
         </div>
 
         <div class="footer-copy">
-            <p>Copyright...</p>
+            <p>&copy; 2026 TopEventNite. All rights reserved.</p>
         </div>
     </footer>
 
