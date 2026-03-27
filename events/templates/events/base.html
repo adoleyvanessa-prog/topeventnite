@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TopEventNite</title>
+
+    <!-- Base CSS -->
+    <link rel="stylesheet" href="{% static 'events/css/base.css' %}">
+
+    <!-- Page-specific CSS -->
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+
+    <!-- NAVBAR (we’ll style this later) -->
+    <nav>
+        <h1>TopEventNite</h1>
+    </nav>
+
+    <!-- PAGE CONTENT -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+</body>
+</html>
