@@ -1,98 +1,183 @@
+{% extends 'events/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{{ event.title }} | TopEventNite</title>
-</head>
-<body>
 
-<h1>{{ event.title }}</h1>
+{% block title %}{{ event.title }} | TopEventNite{% endblock %}
 
-<p><strong>Description:</strong> {{ event.description }}</p>
-<p><strong>Date & Time:</strong> {{ event.start_datetime }}</p>
-<p><strong>Location:</strong> {{ event.location }}</p>
-<p><strong>Venue:</strong> {{ event.venue }}</p>
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'events/css/event_detail.css' %}">
+{% endblock %}
 
-{% if remaining_spots > 0 %}
-    <p><strong>Remaining Spots:</strong> {{ remaining_spots }}</p>
-{% else %}
-    <p><strong>Sold Out</strong></p>
-{% endif %}
+{% block body_class %}event-detail-page{% endblock %}
 
-<p><strong>Price:</strong> £{{ event.price }}</p>
-<p><strong>Organiser:</strong> {{ event.organiser.username }}</p>
+{% block content %}
+<div class="site-shell event-detail-shell">
 
-{% if event.event_image %}
-    <img src="{{ event.event_image.url }}" alt="{{ event.title }}" style="max-width: 400px;">
-{% endif %}
+    <header class="site-header">
+        <nav class="main-nav">
+            <a href="{% url 'home' %}" class="brand">
+                <i class="fa-solid fa-ticket brand-icon"></i>
+                <span class="brand-text">TopEventNite</span>
+            </a>
 
-<!-- ATTENDEE -->
-{% if user.is_authenticated and user_role == "attendee" %}
-    {% if remaining_spots > 0 %}
-        <form method="POST" action="{% url 'book_ticket' event.id %}">
-            {% csrf_token %}
-            <button type="submit">Book Ticket</button>
-        </form>
-    {% else %}
-        <p>This event is sold out.</p>
-    {% endif %}
-{% endif %}
+            <form class="nav-search" action="{% url 'event_list' %}" method="get">
+                <input type="text" name="q" placeholder="Search Events..." aria-label="Search events">
+            </form>
 
-<p><strong>Total Bookings:</strong> {{ total_bookings }}</p>
+            <div class="nav-links">
+                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'event_list' %}">Events</a>
 
-<p><a href="{% url 'event_list' %}">Back to events</a></p>
+                {% if user.is_authenticated and user_role == "organiser" %}
+                    <a href="{% url 'create_event' %}">Create Event</a>
+                {% endif %}
 
-<!-- ORGANISER -->
+                {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}">Logout</a>
+                {% else %}
+                    <a href="{% url 'login' %}">Login/Register</a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+
+    <main class="event-detail-main">
+        <div class="section-title-pill">Event Details</div>
+
+        <section class="event-detail-card">
+            <div class="event-detail-grid">
+                <div class="event-image-column">
+                    {% if event.event_image %}
+                        <img src="{{ event.event_image.url }}" alt="{{ event.title }}" class="event-detail-image">
+                    {% else %}
+                        <div class="event-detail-image event-detail-image-placeholder"></div>
+                    {% endif %}
+
+                    <div class="remaining-spots">
+                        {% if remaining_spots > 0 %}
+                            Remaining spots: {{ remaining_spots }}
+                        {% else %}
+                            Sold Out
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="event-info-column">
+                    <h1 class="event-title">{{ event.title }}</h1>
+
+                    <div class="event-meta-list">
+                        <p><span>Date:</span> {{ event.start_datetime|date:"l jS F Y" }}</p>
+                        <p><span>Time:</span> {{ event.start_datetime|time:"g:iA" }}</p>
+                        <p><span>Location:</span> {{ event.location }}</p>
+                        <p><span>Venue:</span> {{ event.venue }}</p>
+                        <p><span>Price:</span> £{{ event.price }}</p>
+                    </div>
+
+                    <div class="event-description">
+                        <p>{{ event.description }}</p>
+                    </div>
+
+                    <div class="event-organiser">
+                        <p><span>Organiser:</span> {{ event.organiser.username }}</p>
+                    </div>
+
+                    <div class="event-actions">
+                        {% if user.is_authenticated and user_role == "attendee" %}
+                            {% if remaining_spots > 0 %}
+                                <form method="POST" action="{% url 'book_ticket' event.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="primary-btn">Book ticket</button>
+                                </form>
+                            {% else %}
+                                <p class="sold-out-text">This event is sold out.</p>
+                            {% endif %}
+                        {% endif %}
+
+                        <a href="{% url 'event_list' %}" class="secondary-link">Back to events</a>
+
+                        {% if user == event.organiser %}
+                            <div class="organiser-actions">
+                                <a href="{% url 'edit_event' event.id %}" class="secondary-link">Edit Event</a>
+                                <button id="openDeleteModal" class="danger-link" type="button">Delete Event</button>
+                                <a href="{% url 'event_attendees' event.id %}" class="secondary-link">View Event Bookings</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-brand">
+            <i class="fa-solid fa-ticket brand-icon"></i>
+            <span class="brand-text">TopEventNite</span>
+        </div>
+
+        <div class="footer-links">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+
+        <div class="footer-social-text">
+            <p>Follow our socials to get updates and see our most popular events!</p>
+        </div>
+
+        <div class="footer-socials">
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="X">
+                <i class="fa-brands fa-x-twitter"></i>
+            </a>
+            <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                <i class="fa-brands fa-tiktok"></i>
+            </a>
+        </div>
+
+        <div class="footer-copy">
+            <p>&copy; 2026 TopEventNite. All rights reserved.</p>
+        </div>
+    </footer>
+</div>
+
 {% if user == event.organiser %}
-    <p>
-        <a href="{% url 'edit_event' event.id %}">Edit Event</a>
-    </p>
-
-    <!-- 👇 CHANGE THIS -->
-    <button id="openDeleteModal">Delete Event</button>
-
-    <p>
-        <a href="{% url 'event_attendees' event.id %}">View Event Bookings</a>
-    </p>
-{% endif %}
-
-<!-- 🔥 MODAL -->
-<div id="deleteModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6);">
-
-    <div style="background:white; padding:20px; width:300px; margin:200px auto; border-radius:10px; text-align:center;">
-        
+<div id="deleteModal" class="modal-overlay">
+    <div class="modal-box">
         <p>Are you sure you want to delete this event?</p>
 
         <form method="POST" action="{% url 'delete_event' event.id %}">
             {% csrf_token %}
-            <button type="submit">Yes, Delete</button>
+            <button type="submit" class="modal-delete-btn">Yes, Delete</button>
         </form>
 
-        <button id="closeDeleteModal">Cancel</button>
+        <button id="closeDeleteModal" class="modal-cancel-btn" type="button">Cancel</button>
     </div>
-
 </div>
 
-<!-- JS -->
 <script>
     const modal = document.getElementById("deleteModal");
     const openBtn = document.getElementById("openDeleteModal");
     const closeBtn = document.getElementById("closeDeleteModal");
 
-    openBtn.onclick = () => {
-        modal.style.display = "block";
-    }
+    if (openBtn && closeBtn && modal) {
+        openBtn.onclick = () => {
+            modal.style.display = "flex";
+        };
 
-    closeBtn.onclick = () => {
-        modal.style.display = "none";
-    }
-
-    window.onclick = (e) => {
-        if (e.target == modal) {
+        closeBtn.onclick = () => {
             modal.style.display = "none";
-        }
+        };
+
+        window.onclick = (e) => {
+            if (e.target === modal) {
+                modal.style.display = "none";
+            }
+        };
     }
 </script>
-
-</body>
-</html>
+{% endif %}
+{% endblock %}
