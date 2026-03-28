@@ -27,12 +27,12 @@
 }
 
 .main-nav {
-    min-height: 78px;
+    min-height: 70px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    padding: 0.9rem 1.5rem;
+    padding: 0.75rem 1.2rem;
 }
 
 .brand {
@@ -48,7 +48,7 @@
 }
 
 .brand-text {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 700;
 }
 
@@ -59,14 +59,15 @@
 }
 
 .nav-search input {
-    width: min(100%, 430px);
-    height: 44px;
+    width: min(100%, 300px);
+    height: 34px;
     border-radius: 999px;
     border: 1px solid rgba(255, 255, 255, 0.7);
     background: rgba(255, 255, 255, 0.06);
     color: #ffffff;
-    padding: 0 1.4rem;
+    padding: 0 1rem;
     outline: none;
+    font-size: 0.72rem;
 }
 
 .nav-search input::placeholder {
@@ -82,7 +83,7 @@
 }
 
 .nav-links a {
-    font-size: 0.95rem;
+    font-size: 0.78rem;
     font-weight: 600;
     transition: opacity 0.2s ease;
 }
@@ -93,7 +94,7 @@
 
 .hero-section {
     position: relative;
-    min-height: 430px;
+    height: 470px;
     overflow: hidden;
     border-bottom: 1px solid rgba(255, 255, 255, 0.18);
 }
@@ -109,9 +110,7 @@
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background:
-        linear-gradient(to top, rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.12)),
-        linear-gradient(to right, rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.12));
+    background: rgba(0, 0, 0, 0.18);
 }
 
 .hero-bottom-band {
@@ -119,63 +118,67 @@
     left: 0;
     right: 0;
     bottom: 0;
-    min-height: 105px;
+    height: 135px;
     background: rgba(0, 0, 0, 0.58);
     z-index: 1;
 }
 
 .hero-content {
-    position: relative;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
     z-index: 2;
-    min-height: 430px;
+    height: 135px;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
     gap: 2rem;
-    padding: 0 1.5rem 1.25rem;
+    padding: 0 1.2rem;
 }
 
 .hero-left {
-    max-width: 320px;
+    max-width: 310px;
 }
 
 .hero-left h1 {
-    font-size: clamp(1.7rem, 3vw, 2.6rem);
+    font-size: 1.15rem;
     font-weight: 800;
-    line-height: 1.05;
-    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.45);
+    line-height: 1.15;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
 }
 
 .hero-right {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: flex-end;
     width: 100%;
-    max-width: 430px;
+    max-width: 360px;
 }
 
 .hero-pill {
     background: #f3f3f3;
     color: #111111;
     width: 100%;
-    max-width: 390px;
-    min-height: 105px;
-    padding: 1.4rem 2rem;
+    max-width: 340px;
+    min-height: 88px;
+    padding: 1rem 1.6rem;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    border-top-left-radius: 55px;
-    border-bottom-left-radius: 55px;
-    border-top-right-radius: 999px;
-    border-bottom-right-radius: 999px;
+    border-top-left-radius: 999px;
+    border-bottom-left-radius: 999px;
+    border-top-right-radius: 34px;
+    border-bottom-right-radius: 0;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
 }
 
 .hero-pill p {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 800;
-    line-height: 1.2;
-    max-width: 220px;
+    line-height: 1.15;
+    max-width: 200px;
 }
 
 .home-main {
@@ -297,19 +300,19 @@
 
 .site-footer {
     display: grid;
-    grid-template-columns: 1.4fr 0.8fr 1fr 0.8fr;
-    gap: 2rem;
-    align-items: center;
-    padding: 2.2rem 1.5rem 1rem;
+    grid-template-columns: 1.4fr 0.7fr 0.9fr 0.8fr;
+    gap: 1.4rem;
+    align-items: start;
+    padding: 1.6rem 1.2rem 0.8rem;
     border-top: 1px solid rgba(255, 255, 255, 0.22);
 }
 
 .footer-brand {
     display: flex;
     align-items: center;
-    gap: 0.8rem;
+    gap: 0.65rem;
     font-weight: 700;
-    font-size: 1.15rem;
+    font-size: 0.95rem;
 }
 
 .footer-links {
@@ -320,7 +323,7 @@
 }
 
 .footer-links a {
-    font-size: 0.95rem;
+    font-size: 0.78rem;
     font-weight: 500;
 }
 
@@ -330,7 +333,7 @@
 }
 
 .footer-social-text p {
-    font-size: 0.95rem;
+    font-size: 0.78rem;
     font-weight: 500;
     line-height: 1.15;
 }
@@ -339,16 +342,16 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 1rem;
-    font-size: 1.6rem;
+    gap: 0.9rem;
+    font-size: 1.25rem;
     align-self: start;
 }
 
 .footer-copy {
     grid-column: 1 / -1;
     text-align: center;
-    margin-top: 0.25rem;
-    font-size: 0.88rem;
+    margin-top: 0.15rem;
+    font-size: 0.72rem;
     color: rgba(255, 255, 255, 0.92);
 }
 
