@@ -87,15 +87,11 @@ TopEventNite{% endblock %} {% block extra_css %}
       <div class="event-grid">
         {% for event in organiser_events %}
         <article class="event-card">
-          {% if event.image %}
-          <img
-            src="{{ event.image.url }}"
-            alt="{{ event.title }}"
-            class="event-card-image"
-          />
-          {% else %}
-          <div class="event-card-image event-card-image-placeholder"></div>
-          {% endif %}
+          {% if event.event_image %}
+    <img src="{{ event.event_image.url }}" alt="{{ event.title }}" class="event-card-image">
+{% else %}
+    <div class="event-card-image event-card-image-placeholder"></div>
+{% endif %}
 
           <div class="event-card-overlay"></div>
 
@@ -129,15 +125,11 @@ TopEventNite{% endblock %} {% block extra_css %}
       <div class="event-grid">
         {% for event in featured_events %}
         <article class="event-card">
-          {% if event.image %}
-          <img
-            src="{{ event.image.url }}"
-            alt="{{ event.title }}"
-            class="event-card-image"
-          />
-          {% else %}
-          <div class="event-card-image event-card-image-placeholder"></div>
-          {% endif %}
+          {% if event.event_image %}
+    <img src="{{ event.event_image.url }}" alt="{{ event.title }}" class="event-card-image">
+{% else %}
+    <div class="event-card-image event-card-image-placeholder"></div>
+{% endif %}
 
           <div class="event-card-overlay"></div>
 
