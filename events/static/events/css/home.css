@@ -174,7 +174,7 @@
     /* pushes it fully to the edge */
     margin-left: auto;
     margin-right: 0;
-    
+
     border-top-left-radius: 999px;
     border-bottom-left-radius: 999px;
     border-top-right-radius: 0;
@@ -354,6 +354,15 @@
     gap: 0.9rem;
     font-size: 1.25rem;
     align-self: start;
+}
+
+.footer-socials a {
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.footer-socials a:hover {
+    transform: translateY(-3px);
+    opacity: 0.8;
 }
 
 .footer-copy {
