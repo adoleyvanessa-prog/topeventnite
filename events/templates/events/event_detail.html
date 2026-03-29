@@ -60,7 +60,7 @@ content %}
               >Back to events</a
             >
 
-            {% if user == event.organiser %}
+            {% if user.is_authenticated and user == event.organiser %}
             <div class="organiser-actions">
               <a href="{% url 'edit_event' event.id %}" class="secondary-link"
                 >Edit Event</a
@@ -81,7 +81,7 @@ content %}
     </section>
   </main>
 </div>
-{% if user == event.organiser %}
+{% if user.is_authenticated and user == event.organiser %}
 <div id="deleteModal" class="modal-overlay">
   <div class="modal-box">
     <p>Are you sure you want to delete this event?</p>

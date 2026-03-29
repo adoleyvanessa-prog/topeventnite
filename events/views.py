@@ -136,6 +136,9 @@ def book_ticket(request, event_id):
     if request.user.profile.role != "attendee":
         return HttpResponseForbidden("Only attendees can book tickets.")
 
+    if not settings.STRIPE_SECRET_KEY:
+        return HttpResponseForbidden("Stripe is not configured.")
+
     event = get_object_or_404(Event, id=event_id)
 
     confirmed_bookings = event.bookings.filter(status="confirmed").count()
@@ -145,7 +148,7 @@ def book_ticket(request, event_id):
     existing_booking = Booking.objects.filter(
         user=request.user,
         event=event
-        ).first()
+    ).first()
     if existing_booking:
         return HttpResponseForbidden("You have already booked this event.")
 
