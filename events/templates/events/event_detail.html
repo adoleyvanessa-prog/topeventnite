@@ -22,6 +22,14 @@
                     {% else %}
                         <div class="event-detail-image event-detail-image-placeholder"></div>
                     {% endif %}
+
+                    <div class="remaining-spots">
+                        {% if remaining_spots > 0 %}
+                            Remaining spots: {{ remaining_spots }}
+                        {% else %}
+                            Sold Out
+                        {% endif %}
+                    </div>
                 </div>
 
                 <div class="event-info-column">
@@ -39,8 +47,30 @@
                         <p>{{ event.description }}</p>
                     </div>
 
+                    <div class="event-organiser">
+                        <p><span>Organiser:</span> {{ event.organiser.username }}</p>
+                    </div>
+
                     <div class="event-actions">
+                        {% if user.is_authenticated and user_role == "attendee" %}
+                            {% if remaining_spots > 0 %}
+                                <form method="POST" action="{% url 'book_ticket' event.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="primary-btn">Book ticket</button>
+                                </form>
+                            {% else %}
+                                <p class="sold-out-text">This event is sold out.</p>
+                            {% endif %}
+                        {% endif %}
+
                         <a href="{% url 'event_list' %}" class="secondary-link">Back to events</a>
+
+                        {% if user == event.organiser %}
+                            <div class="organiser-actions">
+                                <a href="{% url 'edit_event' event.id %}" class="secondary-link">Edit Event</a>
+                                <a href="{% url 'event_attendees' event.id %}" class="secondary-link">View Event Bookings</a>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
