@@ -12,12 +12,27 @@
 
 .create-event-main {
     width: 100%;
-    padding: 2rem 0 4rem;
+    padding: 1.5rem 0 4rem;
+}
+
+.section-title-pill {
+    display: inline-flex;
+    align-items: center;
+    min-width: 300px;
+    height: 70px;
+    padding: 0 2.8rem;
+    margin: 0 0 2rem 0;
+    border-radius: 0 999px 999px 0;
+    background: #f2f2f2;
+    color: #111111;
+    font-size: 1.9rem;
+    font-weight: 800;
+    box-sizing: border-box;
 }
 
 .create-event-card {
     width: min(1120px, calc(100% - 4rem));
-    margin: 2rem auto 0;
+    margin: 0 auto;
     border: 1px solid rgba(255, 255, 255, 0.16);
     border-radius: 2rem;
     background: linear-gradient(
@@ -60,22 +75,22 @@
 
 .create-event-header {
     text-align: center;
-    max-width: 700px;
-    margin: 0 auto 2.2rem;
+    max-width: 760px;
+    margin: 0 auto 2.4rem;
 }
 
 .create-event-header h1 {
-    margin: 0 0 0.65rem;
+    margin: 0 0 0.7rem;
     color: #ffffff;
-    font-size: clamp(2rem, 4vw, 3rem);
-    line-height: 1.1;
+    font-size: clamp(2.6rem, 5vw, 4.5rem);
+    line-height: 1.05;
     font-weight: 800;
 }
 
 .create-event-header p {
     margin: 0;
     color: rgba(255, 255, 255, 0.82);
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     line-height: 1.6;
 }
 
@@ -86,7 +101,7 @@
 .form-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.4rem 1.6rem;
+    gap: 1.5rem 2rem;
 }
 
 .form-group {
@@ -99,9 +114,9 @@
 }
 
 .form-group label {
-    margin-bottom: 0.65rem;
+    margin-bottom: 0.7rem;
     color: #ffffff;
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     font-weight: 700;
 }
 
@@ -115,7 +130,7 @@
     color: #ffffff;
     font-size: 1rem;
     font-family: inherit;
-    padding: 1rem 1.2rem;
+    padding: 1rem 1.25rem;
     outline: none;
     transition: all 0.25s ease;
     box-sizing: border-box;
@@ -172,12 +187,34 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    margin-top: 2rem;
+    margin-top: 2.2rem;
     flex-wrap: wrap;
 }
 
-.primary-btn,
-.secondary-link {
+.create-event-actions .primary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 220px;
+    height: 58px;
+    padding: 0 2rem;
+    border: none;
+    border-radius: 999px;
+    background: #f2f2f2;
+    color: #111111;
+    font-size: 1.05rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+.create-event-actions .primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.24);
+}
+
+.create-event-actions .secondary-link {
     min-width: 180px;
     text-align: center;
 }
@@ -205,8 +242,15 @@
         padding: 1.25rem 0 3rem;
     }
 
+    .section-title-pill {
+        min-width: 240px;
+        height: 62px;
+        font-size: 1.5rem;
+        padding: 0 2rem;
+    }
+
     .create-event-header h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
 
     .create-event-header p {

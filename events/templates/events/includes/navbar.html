@@ -20,9 +20,9 @@
             {% if user.is_authenticated %}
                 <a href="{% url 'event_list' %}">Events</a>
 
-                {% if user_role == "attendee" %}
+                {% if user.profile.role == "attendee" %}
                     <a href="{% url 'my_bookings' %}">My Bookings</a>
-                {% elif user_role == "organiser" %}
+                {% elif user.profile.role == "organiser" %}
                     <a href="{% url 'create_event' %}">Create Event</a>
                 {% endif %}
 
