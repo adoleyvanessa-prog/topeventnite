@@ -56,23 +56,26 @@ content %}
             <p class="sold-out-text">This event is sold out.</p>
             {% endif %} {% endif %}
 
-            <a href="{% url 'event_list' %}" class="secondary-link"
-              >Back to events</a
-            >
+            <a href="{% url 'event_list' %}" class="secondary-link">
+              Back to events
+            </a>
 
             {% if user.is_authenticated and user == event.organiser %}
             <div class="organiser-actions">
-              <a href="{% url 'edit_event' event.id %}" class="secondary-link"
-                >Edit Event</a
-              >
+              <a href="{% url 'edit_event' event.id %}" class="secondary-link">
+                Edit Event
+              </a>
+
               <button id="openDeleteModal" class="danger-link" type="button">
                 Delete Event
               </button>
+
               <a
                 href="{% url 'event_attendees' event.id %}"
                 class="secondary-link"
-                >View Event Bookings</a
               >
+                View Event Bookings
+              </a>
             </div>
             {% endif %}
           </div>
