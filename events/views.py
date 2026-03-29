@@ -12,9 +12,15 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
 def home(request):
-    featured_events = Event.objects.order_by('start_datetime')[:3]
+    featured_events = Event.objects.order_by('start_datetime')
     organiser_events = []
     user_role = None
+    sold_out_event_ids = []
+
+    for event in featured_events:
+        confirmed_bookings = event.bookings.filter(status="confirmed").count()
+        if confirmed_bookings >= event.capacity:
+            sold_out_event_ids.append(event.id)
 
     if request.user.is_authenticated:
         profile = Profile.objects.filter(user=request.user).first()
@@ -29,6 +35,7 @@ def home(request):
         'featured_events': featured_events,
         'organiser_events': organiser_events,
         'user_role': user_role,
+        'sold_out_event_ids': sold_out_event_ids,
     })
 
 
