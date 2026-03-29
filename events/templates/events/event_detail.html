@@ -45,21 +45,9 @@ content %}
             <p><span>Organiser:</span> {{ event.organiser.username }}</p>
           </div>
 
-          <div class="event-actions">
-            {% if user.is_authenticated and user_role == "attendee" %} {% if
-            remaining_spots > 0 %}
-            <form method="POST" action="{% url 'book_ticket' event.id %}">
-              {% csrf_token %}
-              <button type="submit" class="primary-btn">Book ticket</button>
-            </form>
-            {% else %}
-            <p class="sold-out-text">This event is sold out.</p>
-            {% endif %} {% endif %}
-
-            <a href="{% url 'event_list' %}" class="secondary-link"
-              >Back to events</a
-            >
-          </div>
+<div class="event-actions">
+    <a href="{% url 'event_list' %}" class="secondary-link">Back to events</a>
+</div>
         </div>
       </div>
     </section>
