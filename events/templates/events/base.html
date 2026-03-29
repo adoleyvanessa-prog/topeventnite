@@ -16,6 +16,12 @@
     {% block extra_css %}{% endblock %}
 </head>
 <body class="{% block body_class %}{% endblock %}">
+
+    {% include 'events/includes/navbar.html' %}
+
     {% block content %}{% endblock %}
+
+    {% include 'events/includes/footer.html' %}
+
 </body>
 </html>
