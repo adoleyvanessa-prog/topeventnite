@@ -31,7 +31,7 @@
 }
 
 .bookings-scroll-wrap {
-    width: min(100%, 1080px);
+    width: min(100%, 980px);
     margin: 0 auto;
     position: relative;
 }
@@ -42,25 +42,25 @@
     position: absolute;
     left: 0;
     right: 0;
-    height: 70px;
+    height: 55px;
     z-index: 3;
     pointer-events: none;
 }
 
 .bookings-scroll-wrap::before {
     top: 0;
-    background: linear-gradient(to bottom, rgba(7, 8, 20, 0.95), rgba(7, 8, 20, 0));
+    background: linear-gradient(to bottom, rgba(10, 8, 25, 0.95), rgba(10, 8, 25, 0));
 }
 
 .bookings-scroll-wrap::after {
     bottom: 0;
-    background: linear-gradient(to top, rgba(46, 9, 9, 0.92), rgba(46, 9, 9, 0));
+    background: linear-gradient(to top, rgba(42, 10, 18, 0.92), rgba(42, 10, 18, 0));
 }
 
 .bookings-container {
-    max-height: 460px;
+    max-height: 470px;
     overflow-y: auto;
-    padding: 0.5rem 0.35rem 0.5rem;
+    padding: 0.3rem 0.2rem 0.6rem;
     scrollbar-width: thin;
     scrollbar-color: rgba(255,255,255,0.25) transparent;
 }
@@ -80,11 +80,11 @@
 
 .booking-card {
     display: grid;
-    grid-template-columns: 120px 1fr auto;
-    gap: 1.2rem;
+    grid-template-columns: 125px 1fr auto;
+    gap: 1.4rem;
     align-items: center;
-    margin-bottom: 1.4rem;
-    padding: 1rem;
+    margin-bottom: 1.3rem;
+    padding: 1rem 1.2rem;
     border-radius: 22px;
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(12px);
@@ -101,8 +101,8 @@
 
 .booking-image,
 .booking-image-placeholder {
-    width: 110px;
-    height: 110px;
+    width: 115px;
+    height: 115px;
     border-radius: 18px;
     object-fit: cover;
     display: block;
@@ -117,16 +117,16 @@
 }
 
 .booking-info h2 {
-    margin: 0 0 0.5rem;
-    font-size: 1.8rem;
+    margin: 0 0 0.55rem;
+    font-size: 1.15rem;
     font-weight: 800;
     line-height: 1.1;
 }
 
 .booking-info p {
-    margin: 0.12rem 0;
-    font-size: 0.92rem;
-    line-height: 1.35;
+    margin: 0.08rem 0;
+    font-size: 0.82rem;
+    line-height: 1.3;
 }
 
 .booking-info span {
@@ -138,11 +138,11 @@
     align-items: center;
     justify-content: center;
     margin-left: 0.35rem;
-    min-width: 98px;
-    min-height: 34px;
-    padding: 0.35rem 0.9rem;
+    min-width: 88px;
+    min-height: 30px;
+    padding: 0.3rem 0.8rem;
     border-radius: 999px;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 700;
     color: #ffffff;
     background: #2e7d32;
@@ -152,19 +152,21 @@
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
+    height: 100%;
 }
 
 .cancel-booking-btn {
-    min-width: 135px;
-    min-height: 38px;
+    min-width: 122px;
+    min-height: 34px;
     border: none;
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.9);
     color: #111111;
-    font-size: 0.76rem;
+    font-size: 0.72rem;
     font-weight: 700;
     cursor: pointer;
     transition: transform 0.2s ease, opacity 0.2s ease;
+    align-self: end;
 }
 
 .cancel-booking-btn:hover {
@@ -174,7 +176,7 @@
 
 .back-home-wrap {
     text-align: center;
-    margin-top: 1rem;
+    margin-top: 0.8rem;
 }
 
 .back-home-link {

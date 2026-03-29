@@ -238,8 +238,14 @@ def my_bookings(request):
         user=request.user
     ).order_by('-created_at')
 
+    user_role = None
+    profile = Profile.objects.filter(user=request.user).first()
+    if profile:
+        user_role = profile.role
+
     return render(request, "events/my_bookings.html", {
-        "bookings": bookings
+        "bookings": bookings,
+        "user_role": user_role,
     })
 
 
