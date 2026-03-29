@@ -1,0 +1,207 @@
+.auth-page {
+    min-height: 100vh;
+    color: #ffffff;
+    background:
+        radial-gradient(circle at 18% 20%, rgba(74, 30, 132, 0.38), transparent 28%),
+        radial-gradient(circle at 84% 18%, rgba(130, 20, 20, 0.28), transparent 28%),
+        radial-gradient(circle at 76% 80%, rgba(255, 120, 0, 0.12), transparent 24%),
+        linear-gradient(135deg, #070814 0%, #120022 44%, #2c0909 100%);
+}
+
+.auth-shell {
+    min-height: 100vh;
+}
+
+.auth-main {
+    padding: 1.6rem 0 2.8rem;
+}
+
+.section-title-pill {
+    display: inline-flex;
+    align-items: center;
+    min-width: 220px;
+    min-height: 52px;
+    background: #f2f2f2;
+    color: #111111;
+    border-radius: 0 999px 999px 0;
+    padding: 0.8rem 2rem;
+    font-size: 0.95rem;
+    font-weight: 800;
+    margin-bottom: 1.7rem;
+}
+
+.auth-card {
+    width: min(100%, 760px);
+    margin: 0 auto;
+    padding: 1.4rem;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22);
+}
+
+.register-card {
+    width: min(100%, 820px);
+}
+
+.auth-card-inner {
+    width: min(100%, 520px);
+    margin: 0 auto;
+    padding: 0.8rem 0 0.4rem;
+}
+
+.auth-heading {
+    margin: 0 0 1.6rem;
+    text-align: center;
+    font-size: 1.25rem;
+    line-height: 1.4;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    align-items: center;
+    gap: 1rem;
+}
+
+.form-row label {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.form-row input,
+.form-row select {
+    width: 100%;
+    min-height: 46px;
+    padding: 0.8rem 1rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.04);
+    color: #ffffff;
+    outline: none;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+}
+
+.form-row input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.form-row input:focus,
+.form-row select:focus {
+    border-color: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.07);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08);
+}
+
+.form-row select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.form-row select option {
+    color: #111111;
+}
+
+.auth-button-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.4rem;
+}
+
+.auth-submit-btn {
+    min-width: 120px;
+    min-height: 40px;
+    border: none;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.92);
+    color: #111111;
+    font-size: 0.8rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.auth-submit-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.92;
+}
+
+.auth-links {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.auth-links p {
+    margin: 0 0 0.35rem;
+    color: #ffffff;
+}
+
+.auth-links a,
+.auth-back-link {
+    color: #ffffff;
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+.auth-back-wrap {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.auth-alert {
+    margin-bottom: 1rem;
+    padding: 0.8rem 1rem;
+    border-radius: 14px;
+    background: rgba(198, 40, 40, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: #ffffff;
+    text-align: center;
+    font-weight: 600;
+}
+
+.field-error {
+    grid-column: 2 / 3;
+    margin-top: 0.2rem;
+    color: #ffb3b3;
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+@media (max-width: 700px) {
+    .auth-card,
+    .register-card {
+        width: min(100%, 92%);
+        padding: 1.2rem;
+    }
+
+    .auth-card-inner {
+        width: 100%;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0.45rem;
+    }
+
+    .field-error {
+        grid-column: auto;
+    }
+
+    .auth-heading {
+        font-size: 1.08rem;
+    }
+}

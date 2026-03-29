@@ -1,35 +1,59 @@
+{% extends 'events/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Login</title>
-</head>
-<body>
 
-<h1>Login</h1>
+{% block title %}Login | TopEventNite{% endblock %}
 
-{% if error_message %}
-    <p style="color: red;">{{ error_message }}</p>
-{% endif %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'events/css/auth.css' %}">
+{% endblock %}
 
-<form method="POST">
-    {% csrf_token %}
+{% block body_class %}auth-page{% endblock %}
 
-    <p>
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username" required>
-    </p>
+{% block content %}
+<div class="site-shell auth-shell">
+    <main class="auth-main">
+        <div class="section-title-pill">Login</div>
 
-    <p>
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required>
-    </p>
+        <section class="auth-card">
+            <div class="auth-card-inner">
+                <h2 class="auth-heading">
+                    Login or register now to book or create and manage all your events.
+                </h2>
 
-    <button type="submit">Login</button>
-</form>
+                {% if error_message %}
+                    <div class="auth-alert">
+                        {{ error_message }}
+                    </div>
+                {% endif %}
 
-<p>Don’t have an account? <a href="/register/">Register</a></p>
-<p><a href="/">Back to home</a></p>
+                <form method="POST" class="auth-form" novalidate>
+                    {% csrf_token %}
 
-</body>
-</html>
+                    <div class="form-row">
+                        <label for="username">Username:</label>
+                        <input type="text" name="username" id="username" required>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="password">Password:</label>
+                        <input type="password" name="password" id="password" required>
+                    </div>
+
+                    <div class="auth-button-wrap">
+                        <button type="submit" class="auth-submit-btn">Login</button>
+                    </div>
+                </form>
+
+                <div class="auth-links">
+                    <p>Don’t have an account?</p>
+                    <a href="{% url 'register' %}">Register</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="auth-back-wrap">
+            <a href="{% url 'home' %}" class="auth-back-link">Back to home</a>
+        </div>
+    </main>
+</div>
+{% endblock %}

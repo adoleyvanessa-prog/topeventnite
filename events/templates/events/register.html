@@ -1,20 +1,94 @@
+{% extends 'events/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Register</title>
-</head>
-<body>
 
-<h1>Create Account</h1>
+{% block title %}Register | TopEventNite{% endblock %}
 
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Register</button>
-</form>
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'events/css/auth.css' %}">
+{% endblock %}
 
-<a href="/">Back to home</a>
+{% block body_class %}auth-page{% endblock %}
 
-</body>
-</html>
+{% block content %}
+<div class="site-shell auth-shell">
+    <main class="auth-main">
+        <div class="section-title-pill">Register</div>
+
+        <section class="auth-card register-card">
+            <div class="auth-card-inner">
+                <h2 class="auth-heading">
+                    Create your account now to get started.
+                </h2>
+
+                <form method="POST" class="auth-form auth-form-register" novalidate>
+                    {% csrf_token %}
+
+                    <div class="form-row">
+                        <label for="{{ form.first_name.id_for_label }}">First Name:</label>
+                        {{ form.first_name }}
+                        {% if form.first_name.errors %}
+                            <div class="field-error">{{ form.first_name.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-row">
+                        <label for="{{ form.last_name.id_for_label }}">Last Name:</label>
+                        {{ form.last_name }}
+                        {% if form.last_name.errors %}
+                            <div class="field-error">{{ form.last_name.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-row">
+                        <label for="{{ form.email.id_for_label }}">Email Address:</label>
+                        {{ form.email }}
+                        {% if form.email.errors %}
+                            <div class="field-error">{{ form.email.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-row">
+                        <label for="{{ form.username.id_for_label }}">Username:</label>
+                        {{ form.username }}
+                        {% if form.username.errors %}
+                            <div class="field-error">{{ form.username.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-row">
+                        <label for="{{ form.password.id_for_label }}">Password:</label>
+                        {{ form.password }}
+                        {% if form.password.errors %}
+                            <div class="field-error">{{ form.password.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-row">
+                        <label for="{{ form.role.id_for_label }}">Role:</label>
+                        {{ form.role }}
+                        {% if form.role.errors %}
+                            <div class="field-error">{{ form.role.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+
+                    {% if form.non_field_errors %}
+                        <div class="auth-alert">
+                            {% for error in form.non_field_errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+                    <div class="auth-button-wrap">
+                        <button type="submit" class="auth-submit-btn">Register</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <div class="auth-back-wrap">
+            <a href="{% url 'home' %}" class="auth-back-link">Back to home</a>
+        </div>
+    </main>
+</div>
+{% endblock %}
