@@ -1,110 +1,81 @@
+{% extends 'events/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>My Bookings | TopEventNite</title>
-    <style>
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.65);
-        }
 
-        .modal-content {
-            background: white;
-            width: 90%;
-            max-width: 420px;
-            margin: 12% auto;
-            padding: 24px;
-            border-radius: 16px;
-            text-align: center;
-        }
+{% block title %}My Bookings | TopEventNite{% endblock %}
 
-        .modal-buttons {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-        }
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'events/css/my_bookings.css' %}">
+{% endblock %}
 
-        .close-btn,
-        .confirm-btn {
-            padding: 10px 18px;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-        }
+{% block body_class %}my-bookings-page{% endblock %}
 
-        .close-btn {
-            background: #ccc;
-        }
+{% block content %}
+<div class="site-shell my-bookings-shell">
+    <main class="my-bookings-main">
+        <div class="section-title-pill">My Bookings</div>
 
-        .confirm-btn {
-            background: #c62828;
-            color: white;
-        }
+        {% if messages %}
+        <div id="toast-container">
+            {% for message in messages %}
+                <div class="toast">{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
 
-        #toast-container {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 2000;
-}
+        {% if bookings %}
+        <section class="bookings-scroll-wrap">
+            <div class="bookings-container">
+                {% for booking in bookings %}
+                <article class="booking-card">
+                    <div class="booking-image-wrap">
+                        {% if booking.event.event_image %}
+                            <img
+                                src="{{ booking.event.event_image.url }}"
+                                alt="{{ booking.event.title }}"
+                                class="booking-image"
+                            >
+                        {% else %}
+                            <div class="booking-image booking-image-placeholder"></div>
+                        {% endif %}
+                    </div>
 
-.toast {
-  background: #1e1e1e;
-  color: white;
-  padding: 12px 18px;
-  margin-bottom: 10px;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  opacity: 0;
-  transform: translateY(-20px);
-  animation: fadeIn 0.4s forwards;
-}
+                    <div class="booking-info">
+                        <h2>{{ booking.event.title }}</h2>
+                        <p><span>Date:</span> {{ booking.event.start_datetime|date:"l jS F Y" }}</p>
+                        <p><span>Time:</span> {{ booking.event.start_datetime|time:"g:iA" }}</p>
+                        <p><span>Location:</span> {{ booking.event.location }}</p>
+                        <p><span>Booking Reference:</span> {{ booking.booking_reference }}</p>
+                        <p>
+                            <span>Status:</span>
+                            <span class="status-pill">{{ booking.status|title }}</span>
+                        </p>
+                    </div>
 
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-    </style>
-</head>
-<body>
+                    <div class="booking-actions">
+                        <button
+                            type="button"
+                            class="cancel-booking-btn"
+                            onclick="openModal('{{ booking.id }}', '{{ booking.event.title|escapejs }}')"
+                        >
+                            Cancel booking
+                        </button>
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+        </section>
+        {% else %}
+        <section class="empty-bookings-state">
+            <h2>You have no bookings yet.</h2>
+            <a href="{% url 'event_list' %}" class="back-home-link">Browse events</a>
+        </section>
+        {% endif %}
 
-<h1>My Bookings</h1>
-{% if messages %}
-  <div id="toast-container">
-    {% for message in messages %}
-      <div class="toast">{{ message }}</div>
-    {% endfor %}
-  </div>
-{% endif %}
-
-{% for booking in bookings %}
-    <div>
-        <h2>{{ booking.event.title }}</h2>
-        <p>Date: {{ booking.event.start_datetime }}</p>
-        <p>Location: {{ booking.event.location }}</p>
-        <p>Booking Reference: {{ booking.booking_reference }}</p>
-        <p>Status: {{ booking.status }}</p>
-        <p>Payment Status: {{ booking.payment_status }}</p>
-
-        <p>
-            <button type="button" onclick="openModal('{{ booking.id }}', '{{ booking.event.title|escapejs }}')">
-                Cancel Booking
-            </button>
-        </p>
-    </div>
-    <hr>
-{% empty %}
-    <p>You have no bookings yet.</p>
-{% endfor %}
-
-<p><a href="{% url 'home' %}">Back to home</a></p>
+        <div class="back-home-wrap">
+            <a href="{% url 'home' %}" class="back-home-link">Back to home</a>
+        </div>
+    </main>
+</div>
 
 <div id="cancelModal" class="modal">
     <div class="modal-content">
@@ -138,17 +109,15 @@
         if (event.target === modal) {
             closeModal();
         }
-    }
+    };
 
     setTimeout(() => {
-    const toasts = document.querySelectorAll(".toast");
-    toasts.forEach(toast => {
-      toast.style.opacity = "0";
-      toast.style.transition = "0.5s";
-      setTimeout(() => toast.remove(), 500);
-    });
-  }, 3000);
+        const toasts = document.querySelectorAll(".toast");
+        toasts.forEach(toast => {
+            toast.style.opacity = "0";
+            toast.style.transition = "0.5s";
+            setTimeout(() => toast.remove(), 500);
+        });
+    }, 3000);
 </script>
-
-</body>
-</html>
+{% endblock %}
