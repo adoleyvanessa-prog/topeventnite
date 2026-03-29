@@ -10,15 +10,7 @@ content %}
     <section class="event-detail-card">
       <div class="event-detail-grid">
         <div class="event-image-column">
-          <!--{% if event.event_image and event.event_image.url %}
-          <img
-            src="{{ event.event_image.url }}"
-            alt="{{ event.title }}"
-            class="event-detail-image"
-          />
-          {% else %}
           <div class="event-detail-image event-detail-image-placeholder"></div>
-          {% endif %} -->
 
           <div class="remaining-spots">
             {% if remaining_spots > 0 %} Remaining spots: {{ remaining_spots }}
