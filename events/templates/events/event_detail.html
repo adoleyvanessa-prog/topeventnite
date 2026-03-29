@@ -15,8 +15,20 @@
         <div class="section-title-pill">Event Details</div>
 
         <section class="event-detail-card">
-            <h1 class="event-title">{{ event.title }}</h1>
-            <p>{{ event.description }}</p>
+            <div class="event-detail-grid">
+                <div class="event-image-column">
+                    {% if event.event_image %}
+                        <img src="{{ event.event_image.url }}" alt="{{ event.title }}" class="event-detail-image">
+                    {% else %}
+                        <div class="event-detail-image event-detail-image-placeholder"></div>
+                    {% endif %}
+                </div>
+
+                <div class="event-info-column">
+                    <h1 class="event-title">{{ event.title }}</h1>
+                    <p>{{ event.description }}</p>
+                </div>
+            </div>
         </section>
     </main>
 </div>
