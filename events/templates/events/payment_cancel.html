@@ -1,14 +1,41 @@
+{% extends 'events/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Payment Cancelled | TopEventNite</title>
-</head>
-<body>
 
-<h1>Payment Cancelled</h1>
-<p>Your booking was not completed.</p>
-<p><a href="{% url 'event_list' %}">Browse Events</a></p>
+{% block title %}Payment Cancelled | TopEventNite{% endblock %}
 
-</body>
-</html>
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'events/css/payment_cancel.css' %}">
+{% endblock %}
+
+{% block body_class %}payment-cancel-page{% endblock %}
+
+{% block content %}
+<div class="site-shell payment-cancel-shell">
+<main class="payment-cancel-main">
+<div class="section-title-pill">Payment Cancelled</div>
+
+<section class="payment-cancel-card">
+<div class="payment-cancel-card-inner">
+<div class="payment-cancel-icon-wrap">
+<div class="payment-cancel-icon-circle">
+<i class="fa-solid fa-circle-xmark"></i>
+</div>
+</div>
+
+<div class="payment-cancel-header">
+<h1>Your booking was not completed</h1>
+<p>
+Your payment was cancelled before checkout finished.
+You can browse events again and try booking whenever you’re ready.
+</p>
+</div>
+
+<div class="payment-cancel-actions">
+<a href="{% url 'event_list' %}" class="primary-btn">Browse Events</a>
+<a href="{% url 'home' %}" class="secondary-link">Back to home</a>
+</div>
+</div>
+</section>
+</main>
+</div>
+{% endblock %}
