@@ -1,3 +1,13 @@
+/* =========================================================
+   EVENT ATTENDEES PAGE STYLES
+   ---------------------------------------------------------
+   This file styles the organiser page that shows who has
+   booked an event.
+   It covers the event summary card, attendee count box, the
+   table layout, and the page action area.
+   ========================================================= */
+
+/* Page background for the organiser attendees view */
 .event-attendees-page {
     min-height: 100vh;
     background:
@@ -6,15 +16,21 @@
         linear-gradient(90deg, #07002f 0%, #18003f 45%, #4b0000 100%);
 }
 
+
+/* Outer wrapper */
 .event-attendees-shell {
     width: 100%;
 }
 
+
+/* Main spacing for page content */
 .event-attendees-main {
     width: 100%;
     padding: 1.6rem 0 3rem;
 }
 
+
+/* Rounded page label */
 .section-title-pill {
     display: inline-flex;
     align-items: center;
@@ -30,6 +46,8 @@
     box-sizing: border-box;
 }
 
+
+/* Main glass card containing the event summary and attendees table */
 .event-attendees-card {
     width: min(100%, 1120px);
     margin: 0 auto;
@@ -46,10 +64,14 @@
     overflow: hidden;
 }
 
+
+/* Inner padding for the card */
 .event-attendees-card-inner {
     padding: 2rem 2rem 2.2rem;
 }
 
+
+/* Top layout containing event info on one side and booking count on the other */
 .event-attendees-header {
     display: flex;
     justify-content: space-between;
@@ -58,6 +80,8 @@
     margin-bottom: 1.8rem;
 }
 
+
+/* Main event title */
 .event-summary h1 {
     margin: 0 0 0.45rem;
     color: #ffffff;
@@ -66,6 +90,8 @@
     font-weight: 800;
 }
 
+
+/* Supporting text under the event heading */
 .event-summary-subtext {
     margin: 0 0 1rem;
     color: rgba(255, 255, 255, 0.82);
@@ -73,6 +99,8 @@
     line-height: 1.5;
 }
 
+
+/* Grid for event facts like venue/date/capacity */
 .event-summary-meta {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -90,6 +118,8 @@
     font-weight: 800;
 }
 
+
+/* Highlight box showing how many attendees have booked */
 .booking-count-box {
     min-width: 145px;
     padding: 1rem 1.2rem;
@@ -117,6 +147,8 @@
     font-weight: 700;
 }
 
+
+/* Scroll wrapper around the attendees table */
 .attendees-table-wrap {
     overflow-x: auto;
     border-radius: 22px;
@@ -124,6 +156,8 @@
     background: rgba(255, 255, 255, 0.05);
 }
 
+
+/* Main attendees table */
 .attendees-table {
     width: 100%;
     border-collapse: collapse;
@@ -160,6 +194,8 @@
     background: rgba(255, 255, 255, 0.04);
 }
 
+
+/* Special table cell used when there are no attendees yet */
 .empty-state-cell {
     text-align: center !important;
     padding: 2rem 1rem !important;
@@ -167,6 +203,8 @@
     color: rgba(255, 255, 255, 0.78) !important;
 }
 
+
+/* Bottom action area below the table */
 .event-attendees-actions {
     display: flex;
     justify-content: center;
@@ -179,42 +217,62 @@
     font-size: 0.9rem;
 }
 
+
+/* Tablet/mobile layout adjustments */
 @media (max-width: 900px) {
-    .event-attendees-card {
+    
+/* Main glass card containing the event summary and attendees table */
+.event-attendees-card {
         width: min(100%, calc(100% - 2rem));
     }
 
-    .event-attendees-card-inner {
+    
+/* Inner padding for the card */
+.event-attendees-card-inner {
         padding: 1.4rem 1.2rem 1.8rem;
     }
 
-    .event-attendees-header {
+    
+/* Top layout containing event info on one side and booking count on the other */
+.event-attendees-header {
         flex-direction: column;
     }
 
-    .booking-count-box {
+    
+/* Highlight box showing how many attendees have booked */
+.booking-count-box {
         align-self: flex-start;
         min-width: 130px;
     }
 
-    .event-summary-meta {
+    
+/* Grid for event facts like venue/date/capacity */
+.event-summary-meta {
         grid-template-columns: 1fr;
     }
 }
 
+
+/* Mobile font and spacing adjustments */
 @media (max-width: 600px) {
-    .event-attendees-main {
+    
+/* Main spacing for page content */
+.event-attendees-main {
         padding: 1.2rem 0 2.5rem;
     }
 
-    .section-title-pill {
+    
+/* Rounded page label */
+.section-title-pill {
         min-width: 220px;
         min-height: 48px;
         font-size: 0.9rem;
         padding: 0.75rem 1.7rem;
     }
 
-    .event-summary h1 {
+    
+/* Main event title */
+.event-summary h1 {
         font-size: 2rem;
     }
 

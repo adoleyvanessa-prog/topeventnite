@@ -1,3 +1,12 @@
+/* =========================================================
+   EVENT LIST PAGE STYLES
+   ---------------------------------------------------------
+   This file styles the main browse-events page.
+   It covers the hero section, filter bar, event card grid,
+   badges, buttons, and the empty-state card.
+   ========================================================= */
+
+/* Page background for the full event listing page */
 .event-list-page {
 min-height: 100vh;
 background:
@@ -6,15 +15,21 @@ radial-gradient(circle at bottom right, rgba(162, 22, 22, 0.35), transparent 30%
 linear-gradient(90deg, #07002f 0%, #18003f 45%, #4b0000 100%);
 }
 
+
+/* Outer wrapper */
 .event-list-shell {
 width: 100%;
 }
 
+
+/* Main page spacing */
 .event-list-main {
 width: 100%;
 padding: 1.6rem 0 3rem;
 }
 
+
+/* Rounded page label shown above the event list */
 .section-title-pill {
 display: inline-flex;
 align-items: center;
@@ -30,6 +45,8 @@ font-weight: 800;
 box-sizing: border-box;
 }
 
+
+/* Intro/hero card at the top of the event list page */
 .event-list-hero {
 width: min(100%, 1120px);
 margin: 0 auto 1.8rem;
@@ -46,6 +63,8 @@ box-shadow: 0 18px 35px rgba(0, 0, 0, 0.22);
 overflow: hidden;
 }
 
+
+/* Text content inside the event list hero card */
 .event-list-hero-text {
 padding: 2rem 2rem 2.1rem;
 text-align: center;
@@ -67,11 +86,15 @@ font-size: 1rem;
 line-height: 1.6;
 }
 
+
+/* Wrapper around the search/filter area */
 .event-filters {
     width: min(100%, 1120px);
     margin: 0 auto 1.5rem;
 }
 
+
+/* Search/filter form styling */
 .event-filter-form {
     display: flex;
     gap: 1rem;
@@ -91,6 +114,8 @@ line-height: 1.6;
     box-shadow: 0 18px 35px rgba(0, 0, 0, 0.18);
 }
 
+
+/* Input fields used for searching by title or location */
 .event-filter-form input {
     min-width: 220px;
     height: 46px;
@@ -113,6 +138,8 @@ line-height: 1.6;
     box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08);
 }
 
+
+/* Responsive grid that holds the event cards */
 .events-grid {
 width: min(100%, 1120px);
 margin: 0 auto;
@@ -121,6 +148,8 @@ grid-template-columns: repeat(3, minmax(0, 1fr));
 gap: 1.5rem;
 }
 
+
+/* Individual event card in the listing grid */
 .event-card {
 border: 1px solid rgba(255, 255, 255, 0.16);
 border-radius: 28px;
@@ -141,6 +170,8 @@ transform: translateY(-4px);
 box-shadow: 0 22px 40px rgba(0, 0, 0, 0.28);
 }
 
+
+/* Fixed-height image area for consistent card sizing */
 .event-card-image-wrap {
 position: relative;
 height: 290px;
@@ -186,6 +217,8 @@ rgba(0, 0, 0, 0.04) 100%
 pointer-events: none;
 }
 
+
+/* General badge styling used for event availability */
 .event-badge {
 position: absolute;
 top: 1rem;
@@ -212,6 +245,8 @@ background: rgba(198, 40, 40, 0.95);
 color: #ffffff;
 }
 
+
+/* Text content area inside the card */
 .event-card-content {
 padding: 1.2rem 1.2rem 1.35rem;
 }
@@ -225,6 +260,8 @@ font-weight: 800;
 word-break: break-word;
 }
 
+
+/* Wrapper for date, location, venue and price details */
 .event-meta {
 margin-bottom: 1rem;
 }
@@ -242,6 +279,8 @@ font-weight: 800;
 color: #ffffff !important;
 }
 
+
+/* Main card action button */
 .primary-btn {
 display: inline-flex;
 align-items: center;
@@ -264,11 +303,15 @@ transform: translateY(-2px);
 box-shadow: 0 14px 28px rgba(0, 0, 0, 0.22);
 }
 
+
+/* Wrapper for the no-results / no-events message */
 .empty-events-state {
 width: min(100%, 860px);
 margin: 0 auto;
 }
 
+
+/* Empty state card */
 .empty-events-card {
 border: 1px solid rgba(255, 255, 255, 0.16);
 border-radius: 28px;
@@ -305,6 +348,8 @@ color: rgba(255, 255, 255, 0.82);
 font-size: 0.98rem;
 }
 
+
+/* Secondary link used in the empty state */
 .secondary-link {
 color: #ffffff;
 font-size: 0.92rem;
@@ -316,22 +361,34 @@ text-decoration: none;
 opacity: 0.85;
 }
 
+
+/* Reduce grid columns on medium screens */
 @media (max-width: 1100px) {
+
+/* Responsive grid that holds the event cards */
 .events-grid {
 width: min(100%, calc(100% - 2rem));
 grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+
+/* Intro/hero card at the top of the event list page */
 .event-list-hero {
 width: min(100%, calc(100% - 2rem));
 }
 }
 
+
+/* Mobile layout: single-column cards and stacked filter inputs */
 @media (max-width: 700px) {
+
+/* Main page spacing */
 .event-list-main {
 padding: 1.2rem 0 2.5rem;
 }
 
+
+/* Rounded page label shown above the event list */
 .section-title-pill {
 min-width: 220px;
 min-height: 48px;
@@ -339,6 +396,8 @@ font-size: 0.9rem;
 padding: 0.75rem 1.7rem;
 }
 
+
+/* Text content inside the event list hero card */
 .event-list-hero-text {
 padding: 1.6rem 1.2rem;
 }
@@ -351,19 +410,27 @@ font-size: 2rem;
 font-size: 0.94rem;
 }
 
+
+/* Search/filter form styling */
 .event-filter-form {
     padding: 1rem;
 }
 
+
+/* Input fields used for searching by title or location */
 .event-filter-form input {
     width: 100%;
     min-width: 100%;
 }
 
+
+/* Responsive grid that holds the event cards */
 .events-grid {
 grid-template-columns: 1fr;
 }
 
+
+/* Fixed-height image area for consistent card sizing */
 .event-card-image-wrap {
 height: 260px;
 }

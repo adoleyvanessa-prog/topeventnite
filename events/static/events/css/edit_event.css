@@ -1,3 +1,12 @@
+/* =========================================================
+   EDIT EVENT PAGE STYLES
+   ---------------------------------------------------------
+   This file styles the organiser event editing page.
+   It covers the background, form card, form layout, current
+   image area, validation styles, and action buttons.
+   ========================================================= */
+
+/* Full-page background for the edit event screen */
 .edit-event-page {
 min-height: 100vh;
 background:
@@ -6,15 +15,21 @@ radial-gradient(circle at bottom right, rgba(162, 22, 22, 0.35), transparent 30%
 linear-gradient(90deg, #07002f 0%, #18003f 45%, #4b0000 100%);
 }
 
+
+/* Outer wrapper for the edit page */
 .edit-event-shell {
 width: 100%;
 }
 
+
+/* Main vertical spacing */
 .edit-event-main {
 width: 100%;
 padding: 1.6rem 0 3rem;
 }
 
+
+/* Rounded section label shown at the top */
 .section-title-pill {
 display: inline-flex;
 align-items: center;
@@ -30,6 +45,8 @@ font-weight: 800;
 box-sizing: border-box;
 }
 
+
+/* Main glass card containing the event edit form */
 .edit-event-card {
 width: min(100%, 1080px);
 margin: 0 auto;
@@ -46,10 +63,14 @@ box-shadow: 0 18px 35px rgba(0, 0, 0, 0.22);
 overflow: hidden;
 }
 
+
+/* Inner padding for the card content */
 .edit-event-card-inner {
 padding: 2rem 2rem 2.3rem;
 }
 
+
+/* Centers the page icon above the heading */
 .edit-event-icon-wrap {
 display: flex;
 justify-content: center;
@@ -73,6 +94,8 @@ font-size: 3rem;
 color: #ffffff;
 }
 
+
+/* Header area containing title and intro text */
 .edit-event-header {
 text-align: center;
 max-width: 700px;
@@ -94,16 +117,22 @@ font-size: 1rem;
 line-height: 1.55;
 }
 
+
+/* Main event edit form wrapper */
 .edit-event-form {
 width: 100%;
 }
 
+
+/* Two-column form layout for wider screens */
 .form-grid {
 display: grid;
 grid-template-columns: repeat(2, minmax(0, 1fr));
 gap: 1.25rem 1.6rem;
 }
 
+
+/* Individual label + field grouping */
 .form-group {
 display: flex;
 flex-direction: column;
@@ -120,13 +149,16 @@ font-size: 0.98rem;
 font-weight: 700;
 }
 
+
+/* Small helper text above the current uploaded image info */
 .current-image-text {
     margin: 0 0 0.65rem;
     color: rgba(255, 255, 255, 0.8);
     font-size: 0.9rem;
 }
 
-/* Hide Django's default current file + clear checkbox layout */
+
+/* Hide Django's default clearable file field extras so the custom layout stays clean */
 .edit-event-form .form-group a,
 .edit-event-form .form-group input[type="checkbox"],
 .edit-event-form .form-group label[for$="-clear_id"],
@@ -135,6 +167,8 @@ font-weight: 700;
     display: none;
 }
 
+
+/* Shared styling for form fields */
 .edit-event-form input,
 .edit-event-form textarea,
 .edit-event-form select {
@@ -181,6 +215,8 @@ color: rgba(255, 255, 255, 0.58);
 color: #111111;
 }
 
+
+/* General form error box */
 .form-errors {
 margin-bottom: 1.2rem;
 padding: 0.9rem 1rem;
@@ -191,6 +227,8 @@ color: #ffd6d6;
 font-size: 0.9rem;
 }
 
+
+/* Small field-specific validation message */
 .field-error {
 margin-top: 0.45rem;
 color: #ffd6d6;
@@ -198,6 +236,8 @@ font-size: 0.82rem;
 font-weight: 600;
 }
 
+
+/* Action button area under the form */
 .edit-event-actions {
 display: flex;
 align-items: center;
@@ -236,15 +276,23 @@ text-align: center;
 font-size: 0.88rem;
 }
 
+
+/* On smaller screens the form collapses to one column */
 @media (max-width: 900px) {
+
+/* Main glass card containing the event edit form */
 .edit-event-card {
 width: min(100%, calc(100% - 2rem));
 }
 
+
+/* Inner padding for the card content */
 .edit-event-card-inner {
 padding: 1.5rem 1.2rem 2rem;
 }
 
+
+/* Two-column form layout for wider screens */
 .form-grid {
 grid-template-columns: 1fr;
 }
@@ -254,11 +302,17 @@ grid-column: auto;
 }
 }
 
+
+/* Mobile spacing and font-size refinements */
 @media (max-width: 600px) {
+
+/* Main vertical spacing */
 .edit-event-main {
 padding: 1.2rem 0 2.5rem;
 }
 
+
+/* Rounded section label shown at the top */
 .section-title-pill {
 min-width: 220px;
 min-height: 48px;
@@ -278,6 +332,8 @@ font-size: 0.95rem;
 font-size: 0.92rem;
 }
 
+
+/* Shared styling for form fields */
 .edit-event-form input,
 .edit-event-form textarea,
 .edit-event-form select {

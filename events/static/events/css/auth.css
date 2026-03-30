@@ -1,3 +1,15 @@
+/* =========================================================
+   AUTHENTICATION PAGE STYLES
+   ---------------------------------------------------------
+   This file styles the login and register pages.
+   Main sections covered here:
+   - auth page background and layout
+   - glassmorphism auth card
+   - form rows and field styling
+   - buttons, links and error states
+   ========================================================= */
+
+/* Full-page background and text colour for login/register pages */
 .auth-page {
     min-height: 100vh;
     color: #ffffff;
@@ -8,14 +20,20 @@
         linear-gradient(135deg, #070814 0%, #120022 44%, #2c0909 100%);
 }
 
+
+/* Outer wrapper so the auth pages can stretch to full height */
 .auth-shell {
     min-height: 100vh;
 }
 
+
+/* Main spacing around the authentication card */
 .auth-main {
     padding: 1.6rem 0 2.8rem;
 }
 
+
+/* Rounded page label near the top of the auth pages */
 .section-title-pill {
     display: inline-flex;
     align-items: center;
@@ -30,6 +48,8 @@
     margin-bottom: 1.7rem;
 }
 
+
+/* Main shared card for login/register content */
 .auth-card {
     width: min(100%, 760px);
     margin: 0 auto;
@@ -52,6 +72,8 @@
         inset 0 1px 0 rgba(255,255,255,0.08);
 }
 
+
+/* Soft highlight layer to make the glass card feel more polished */
 .auth-card::before {
     content: "";
     position: absolute;
@@ -65,16 +87,22 @@
     pointer-events: none;
 }
 
+
+/* Slightly wider variation used on the register page */
 .register-card {
     width: min(100%, 820px);
 }
 
+
+/* Inner content wrapper used to keep the form at a readable width */
 .auth-card-inner {
     width: min(100%, 520px);
     margin: 0 auto;
     padding: 1.2rem 0 0.6rem;
 }
 
+
+/* Main page heading */
 .auth-heading {
     margin: 0 0 0.8rem;
     text-align: center;
@@ -84,12 +112,16 @@
     color: #ffffff;
 }
 
+
+/* Form layout stack */
 .auth-form {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
+
+/* Supporting text below the page heading */
 .auth-subtext {
     text-align: center;
     font-size: 0.95rem;
@@ -98,6 +130,8 @@
     margin-bottom: 1.8rem;
 }
 
+
+/* Two-column layout for each label + input row */
 .form-row {
     display: grid;
     grid-template-columns: 140px 1fr;
@@ -105,13 +139,19 @@
     gap: 1rem;
 }
 
+
+/* Label styling for auth forms */
 .form-row label {
     font-size: 0.95rem;
     font-weight: 700;
     color: #ffffff;
 }
 
+
+/* Shared styling for login/register inputs and selects */
 .form-row input,
+
+/* Remove default browser arrow styling for a cleaner custom look */
 .form-row select {
     width: 100%;
     min-height: 48px;
@@ -128,27 +168,14 @@
     transition: all 0.25s ease;
 }
 
-.form-row input,
-.form-row select {
-    width: 100%;
-    min-height: 48px;
-    padding: 0.85rem 1rem;
 
-    border-radius: 999px;
-    border: 1px solid rgba(255,255,255,0.35);
-
-    background: rgba(255,255,255,0.06);
-    color: #ffffff;
-
-    font-size: 0.95rem;
-
-    transition: all 0.25s ease;
-}
-
+/* Softer placeholder text so it does not overpower the field */
 .form-row input::placeholder {
     color: rgba(255, 255, 255, 0.7);
 }
 
+
+/* Focus state for better accessibility and visibility */
 .form-row input:focus,
 .form-row select:focus {
     border-color: rgba(255,255,255,0.9);
@@ -159,6 +186,8 @@
         0 6px 20px rgba(0,0,0,0.15);
 }
 
+
+/* Remove default browser arrow styling for a cleaner custom look */
 .form-row select {
     appearance: none;
     -webkit-appearance: none;
@@ -169,12 +198,16 @@
     color: #111111;
 }
 
+
+/* Centers the submit button */
 .auth-button-wrap {
     display: flex;
     justify-content: center;
     margin-top: 0.4rem;
 }
 
+
+/* Main submit button for login/register */
 .auth-submit-btn {
     min-width: 140px;
     min-height: 44px;
@@ -203,6 +236,8 @@
     box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
 
+
+/* Text link area used beneath the form */
 .auth-links {
     margin-top: 1.5rem;
     text-align: center;
@@ -220,11 +255,15 @@
     font-weight: 700;
 }
 
+
+/* Separate back link wrapper */
 .auth-back-wrap {
     margin-top: 1.5rem;
     text-align: center;
 }
 
+
+/* Error or alert message box shown above the form */
 .auth-alert {
     margin-bottom: 1rem;
     padding: 0.8rem 1rem;
@@ -236,6 +275,8 @@
     font-weight: 600;
 }
 
+
+/* Decorative page icon above the heading */
 .auth-icon-badge {
     width: auto;
     height: auto;
@@ -251,6 +292,8 @@
     box-shadow: none;
 }
 
+
+/* Small field-level validation message */
 .field-error {
     grid-column: 2 / 3;
     margin-top: 0.2rem;
@@ -259,27 +302,39 @@
     font-weight: 600;
 }
 
+
+/* On smaller screens the form switches to a single-column layout */
 @media (max-width: 700px) {
     .auth-card,
-    .register-card {
+    
+/* Slightly wider variation used on the register page */
+.register-card {
         width: min(100%, 92%);
         padding: 1.2rem;
     }
 
-    .auth-card-inner {
+    
+/* Inner content wrapper used to keep the form at a readable width */
+.auth-card-inner {
         width: 100%;
     }
 
-    .form-row {
+    
+/* Two-column layout for each label + input row */
+.form-row {
         grid-template-columns: 1fr;
         gap: 0.45rem;
     }
 
-    .field-error {
+    
+/* Small field-level validation message */
+.field-error {
         grid-column: auto;
     }
 
-    .auth-heading {
+    
+/* Main page heading */
+.auth-heading {
         font-size: 1.8rem;
     }
 }

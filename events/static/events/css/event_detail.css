@@ -1,3 +1,15 @@
+/* =========================================================
+   EVENT DETAIL PAGE STYLES
+   ---------------------------------------------------------
+   This file styles the single event details page.
+   Main sections covered here:
+   - page background and layout
+   - event image/info split layout
+   - action buttons
+   - organiser delete modal
+   ========================================================= */
+
+/* Page background and base text colour for the event details page */
 .event-detail-page {
     min-height: 100vh;
     color: #ffffff;
@@ -8,15 +20,21 @@
         linear-gradient(135deg, #070814 0%, #130026 45%, #2e0909 100%);
 }
 
+
+/* Outer wrapper that keeps the detail page filling the screen height */
 .event-detail-shell {
     min-height: 100vh;
     background: transparent;
 }
 
+
+/* Main content spacing for the details page */
 .event-detail-main {
     padding: 2rem 1.2rem 3rem;
 }
 
+
+/* White rounded section label at the top of the page */
 .section-title-pill {
     display: inline-flex;
     align-items: center;
@@ -32,6 +50,8 @@
     margin-left: -1.2rem;
 }
 
+
+/* Main glassmorphism card holding all event details */
 .event-detail-card {
     width: min(100%, 1100px);
     margin: 0 auto;
@@ -44,6 +64,8 @@
     box-shadow: 0 18px 35px rgba(0, 0, 0, 0.22);
 }
 
+
+/* Two-column layout: image on one side, details on the other */
 .event-detail-grid {
     display: grid;
     grid-template-columns: 1fr 1.1fr;
@@ -51,12 +73,16 @@
     align-items: start;
 }
 
+
+/* Left column for the event image */
 .event-image-column {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+
+/* Shared sizing for either the real event image or a placeholder */
 .event-detail-image,
 .event-detail-image-placeholder {
     width: 100%;
@@ -75,6 +101,8 @@
         linear-gradient(135deg, #0a0030 0%, #1a003d 40%, #3d0a00 100%);
 }
 
+
+/* Remaining tickets/availability text below the image */
 .remaining-spots {
     margin-top: 0.6rem;
     font-size: 0.95rem;
@@ -82,12 +110,16 @@
     text-align: center;
 }
 
+
+/* Right column containing all event text and actions */
 .event-info-column {
     display: flex;
     flex-direction: column;
     gap: 0.9rem;
 }
 
+
+/* Main event title */
 .event-title {
     font-size: clamp(1.8rem, 3vw, 2.6rem);
     line-height: 1.05;
@@ -95,12 +127,16 @@
     margin: 0;
 }
 
+
+/* Remove default paragraph spacing inside detail sections */
 .event-meta-list p,
 .event-organiser p,
 .event-description p {
     margin: 0;
 }
 
+
+/* Event metadata such as date, venue, location and price */
 .event-meta-list p {
     font-size: 0.98rem;
     line-height: 1.45;
@@ -111,6 +147,8 @@
     font-weight: 800;
 }
 
+
+/* Separate description block with top divider */
 .event-description {
     margin-top: 0.3rem;
     padding-top: 0.8rem;
@@ -123,12 +161,16 @@
     color: rgba(255, 255, 255, 0.94);
 }
 
+
+/* Small organiser information text */
 .event-organiser {
     margin-top: 0.25rem;
     font-size: 0.88rem;
     color: rgba(255, 255, 255, 0.9);
 }
 
+
+/* Action area for booking links or organiser controls */
 .event-actions {
     margin-top: 0.4rem;
     display: flex;
@@ -136,6 +178,8 @@
     gap: 0.9rem;
 }
 
+
+/* Main button style used on this page */
 .primary-btn {
     display: inline-flex;
     align-items: center;
@@ -151,6 +195,8 @@
     cursor: pointer;
 }
 
+
+/* Text-style action links for lighter or destructive actions */
 .secondary-link,
 .danger-link {
     display: inline-block;
@@ -164,12 +210,16 @@
     padding: 0;
 }
 
+
+/* Group of organiser-only action buttons/links */
 .organiser-actions {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
 }
 
+
+/* Warning text shown when no tickets remain */
 .sold-out-text {
     font-size: 0.9rem;
     font-weight: 700;
@@ -177,63 +227,9 @@
     margin: 0;
 }
 
-.site-footer {
-    display: grid;
-    grid-template-columns: 1.4fr 0.7fr 0.9fr 0.8fr;
-    gap: 1.4rem;
-    align-items: start;
-    padding: 1.6rem 1.2rem 0.8rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.22);
-}
 
-.footer-brand {
-    display: flex;
-    align-items: center;
-    gap: 0.65rem;
-    font-weight: 700;
-    font-size: 0.95rem;
-}
 
-.footer-links {
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-}
-
-.footer-links a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 0.78rem;
-    font-weight: 500;
-}
-
-.footer-social-text p {
-    font-size: 0.78rem;
-    font-weight: 500;
-    line-height: 1.15;
-    margin: 0;
-}
-
-.footer-socials {
-    display: flex;
-    align-items: center;
-    gap: 0.9rem;
-    font-size: 1.25rem;
-}
-
-.footer-socials a {
-    color: #ffffff;
-    text-decoration: none;
-}
-
-.footer-copy {
-    grid-column: 1 / -1;
-    text-align: center;
-    margin-top: 0.15rem;
-    font-size: 0.72rem;
-    color: rgba(255, 255, 255, 0.92);
-}
-
+/* Full-screen confirmation modal overlay for event deletion */
 .modal-overlay {
     position: fixed;
     inset: 0;
@@ -247,6 +243,8 @@
     -webkit-backdrop-filter: blur(6px);
 }
 
+
+/* Inner delete confirmation modal */
 .modal-box {
     width: min(100%, 430px);
     padding: 2rem 1.8rem;
@@ -273,6 +271,8 @@
     margin-bottom: 0.85rem;
 }
 
+
+/* Shared button sizing inside the modal */
 .modal-delete-btn,
 .modal-cancel-btn {
     display: inline-flex;
@@ -310,8 +310,12 @@
     background: rgba(255, 255, 255, 0.14);
 }
 
+
+/* Tablet layout: switch to single-column event layout */
 @media (max-width: 900px) {
-    .event-detail-grid {
+    
+/* Two-column layout: image on one side, details on the other */
+.event-detail-grid {
         grid-template-columns: 1fr;
     }
 
@@ -325,6 +329,8 @@
     }
 }
 
+
+/* Smaller mobile layout refinements */
 @media (max-width: 640px) {
     .event-detail-main,
     .main-nav,
@@ -333,12 +339,16 @@
         padding-right: 1rem;
     }
 
-    .section-title-pill {
+    
+/* White rounded section label at the top of the page */
+.section-title-pill {
         min-width: 190px;
         font-size: 0.88rem;
     }
 
-    .event-detail-card {
+    
+/* Main glassmorphism card holding all event details */
+.event-detail-card {
         padding: 1.2rem;
     }
 
@@ -346,7 +356,9 @@
         grid-template-columns: 1fr;
     }
 
-    .organiser-actions {
+    
+/* Group of organiser-only action buttons/links */
+.organiser-actions {
         flex-direction: column;
         gap: 0.7rem;
     }

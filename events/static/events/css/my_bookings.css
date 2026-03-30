@@ -1,3 +1,12 @@
+/* =========================================================
+   MY BOOKINGS PAGE STYLES
+   ---------------------------------------------------------
+   This file styles the attendee bookings page.
+   It covers the bookings list, booking cards, modal popup for
+   cancelling, toast messages, and the empty state.
+   ========================================================= */
+
+/* Page background for the attendee bookings view */
 .my-bookings-page {
     min-height: 100vh;
     color: #ffffff;
@@ -8,14 +17,20 @@
         linear-gradient(135deg, #070814 0%, #130026 45%, #2e0909 100%);
 }
 
+
+/* Outer full-height wrapper */
 .my-bookings-shell {
     min-height: 100vh;
 }
 
+
+/* Main vertical spacing */
 .my-bookings-main {
     padding: 1.5rem 0 2.5rem;
 }
 
+
+/* Rounded label at the top of the page */
 .section-title-pill {
     display: inline-flex;
     align-items: center;
@@ -30,12 +45,16 @@
     margin-bottom: 1.6rem;
 }
 
+
+/* Wrapper around the scrollable bookings list */
 .bookings-scroll-wrap {
     width: min(100%, 980px);
     margin: 0 auto;
     position: relative;
 }
 
+
+/* Fade overlays that visually soften the scroll edges */
 .bookings-scroll-wrap::before,
 .bookings-scroll-wrap::after {
     content: "";
@@ -57,6 +76,8 @@
     background: linear-gradient(to top, rgba(42, 10, 18, 0.92), rgba(42, 10, 18, 0));
 }
 
+
+/* Scrollable container that holds all booking cards */
 .bookings-container {
     max-height: 470px;
     overflow-y: auto;
@@ -78,6 +99,8 @@
     border-radius: 999px;
 }
 
+
+/* Individual booking card layout */
 .booking-card {
     display: grid;
     grid-template-columns: 125px 1fr auto;
@@ -97,12 +120,16 @@
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
 }
 
+
+/* Keeps the booking image aligned nicely inside the card */
 .booking-image-wrap {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+
+/* Booking image or fallback placeholder */
 .booking-image,
 .booking-image-placeholder {
     width: 115px;
@@ -120,6 +147,8 @@
         linear-gradient(135deg, #0a0030 0%, #1a003d 40%, #3d0a00 100%);
 }
 
+
+/* Event title inside each booking card */
 .booking-info h2 {
     margin: 0 0 0.55rem;
     font-size: 1.15rem;
@@ -138,6 +167,8 @@
     font-weight: 800;
 }
 
+
+/* Small pill showing the booking status */
 .status-pill {
     display: inline-flex;
     align-items: center;
@@ -153,6 +184,8 @@
     background: #2e7d32;
 }
 
+
+/* Right-side action area for the cancel button */
 .booking-actions {
     display: flex;
     align-items: flex-end;
@@ -160,6 +193,8 @@
     height: 100%;
 }
 
+
+/* Cancel booking button */
 .cancel-booking-btn {
     min-width: 122px;
     min-height: 34px;
@@ -179,6 +214,8 @@
     opacity: 0.9;
 }
 
+
+/* Link area below the bookings list */
 .back-home-wrap {
     text-align: center;
     margin-top: 0.8rem;
@@ -194,6 +231,8 @@
     opacity: 0.8;
 }
 
+
+/* Empty state shown when the attendee has no bookings */
 .empty-bookings-state {
     width: min(100%, 900px);
     margin: 0 auto;
@@ -209,6 +248,8 @@
     margin: 0 0 1rem;
 }
 
+
+/* Full-screen modal overlay for booking cancellation confirmation */
 .modal {
     display: none;
     position: fixed;
@@ -220,6 +261,8 @@
     padding: 1rem;
 }
 
+
+/* Inner modal card */
 .modal-content {
     width: min(100%, 430px);
     margin: 10% auto 0;
@@ -250,6 +293,8 @@
     color: rgba(255, 255, 255, 0.88);
 }
 
+
+/* Button layout inside the modal */
 .modal-buttons {
     margin-top: 1.4rem;
     display: flex;
@@ -258,6 +303,8 @@
     flex-wrap: wrap;
 }
 
+
+/* Shared button sizing for the modal actions */
 .close-btn,
 .confirm-btn {
     display: inline-flex;
@@ -295,6 +342,8 @@
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.24);
 }
 
+
+/* Positioning for toast messages */
 #toast-container {
     position: fixed;
     top: 20px;
@@ -302,6 +351,8 @@
     z-index: 2200;
 }
 
+
+/* Individual toast notification */
 .toast {
     background: #1e1e1e;
     color: white;
@@ -314,6 +365,8 @@
     animation: fadeIn 0.4s forwards;
 }
 
+
+/* Simple animation for toast entrance */
 @keyframes fadeIn {
     to {
         opacity: 1;
@@ -321,13 +374,19 @@
     }
 }
 
+
+/* Tablet layout changes for booking cards */
 @media (max-width: 900px) {
-    .booking-card {
+    
+/* Individual booking card layout */
+.booking-card {
         grid-template-columns: 100px 1fr;
         gap: 1rem;
     }
 
-    .booking-actions {
+    
+/* Right-side action area for the cancel button */
+.booking-actions {
         grid-column: 1 / -1;
         justify-content: flex-start;
     }
@@ -338,31 +397,45 @@
         height: 96px;
     }
 
-    .booking-info h2 {
+    
+/* Event title inside each booking card */
+.booking-info h2 {
         font-size: 1.4rem;
     }
 }
 
+
+/* Mobile layout removes forced scroll area and stacks content */
 @media (max-width: 640px) {
-    .section-title-pill {
+    
+/* Rounded label at the top of the page */
+.section-title-pill {
         min-width: 210px;
         font-size: 0.9rem;
         padding: 0.75rem 1.5rem;
     }
 
-    .booking-card {
+    
+/* Individual booking card layout */
+.booking-card {
         grid-template-columns: 1fr;
     }
 
-    .booking-image-wrap {
+    
+/* Keeps the booking image aligned nicely inside the card */
+.booking-image-wrap {
         justify-content: flex-start;
     }
 
-    .booking-actions {
+    
+/* Right-side action area for the cancel button */
+.booking-actions {
         justify-content: flex-start;
     }
 
-    .bookings-container {
+    
+/* Scrollable container that holds all booking cards */
+.bookings-container {
         max-height: none;
         overflow-y: visible;
     }

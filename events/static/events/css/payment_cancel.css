@@ -1,3 +1,13 @@
+/* =========================================================
+   PAYMENT CANCEL PAGE STYLES
+   ---------------------------------------------------------
+   This file styles the page shown when a Stripe checkout is
+   cancelled or interrupted.
+   It covers the background, cancel message card, and the
+   actions that guide the user back to booking flow.
+   ========================================================= */
+
+/* Full-page background for the cancelled payment page */
 .payment-cancel-page {
 min-height: 100vh;
 background:
@@ -6,15 +16,21 @@ radial-gradient(circle at bottom right, rgba(162, 22, 22, 0.35), transparent 30%
 linear-gradient(90deg, #07002f 0%, #18003f 45%, #4b0000 100%);
 }
 
+
+/* Outer wrapper */
 .payment-cancel-shell {
 width: 100%;
 }
 
+
+/* Main spacing around the card */
 .payment-cancel-main {
 width: 100%;
 padding: 1.6rem 0 3rem;
 }
 
+
+/* Rounded page title pill */
 .section-title-pill {
 display: inline-flex;
 align-items: center;
@@ -30,6 +46,8 @@ font-weight: 800;
 box-sizing: border-box;
 }
 
+
+/* Main glass card holding the cancellation message */
 .payment-cancel-card {
 width: min(100%, 860px);
 margin: 0 auto;
@@ -46,17 +64,23 @@ box-shadow: 0 18px 35px rgba(0, 0, 0, 0.22);
 overflow: hidden;
 }
 
+
+/* Inner card spacing and centred alignment */
 .payment-cancel-card-inner {
 padding: 2.2rem 2rem 2.4rem;
 text-align: center;
 }
 
+
+/* Centers the icon above the heading */
 .payment-cancel-icon-wrap {
 display: flex;
 justify-content: center;
 margin-bottom: 1rem;
 }
 
+
+/* Decorative icon circle */
 .payment-cancel-icon-circle {
 width: 5.2rem;
 height: 5.2rem;
@@ -74,6 +98,8 @@ font-size: 2rem;
 color: #ffffff;
 }
 
+
+/* Header text area */
 .payment-cancel-header {
 max-width: 620px;
 margin: 0 auto;
@@ -94,6 +120,8 @@ font-size: 1rem;
 line-height: 1.6;
 }
 
+
+/* Action buttons that help the user continue after a cancelled payment */
 .payment-cancel-actions {
 display: flex;
 align-items: center;
@@ -140,21 +168,33 @@ font-weight: 700;
 opacity: 0.85;
 }
 
+
+/* Tablet spacing adjustments */
 @media (max-width: 900px) {
+
+/* Main glass card holding the cancellation message */
 .payment-cancel-card {
 width: min(100%, calc(100% - 2rem));
 }
 
+
+/* Inner card spacing and centred alignment */
 .payment-cancel-card-inner {
 padding: 1.8rem 1.2rem 2rem;
 }
 }
 
+
+/* Mobile text and spacing refinements */
 @media (max-width: 600px) {
+
+/* Main spacing around the card */
 .payment-cancel-main {
 padding: 1.2rem 0 2.5rem;
 }
 
+
+/* Rounded page title pill */
 .section-title-pill {
 min-width: 220px;
 min-height: 48px;
