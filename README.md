@@ -1,5 +1,11 @@
 # TopEventNite
-TopEventNite is a full stack Django web application where organisers can create events and users can browse and book tickets.
+
+![TopEventNite Mockup](assets/images/mockup.png)
+<p align="center">
+  <a href="https://topeventnite-vanessa-f8272a2fa386.herokuapp.com/" target="_blank">
+    View Live Website
+  </a>
+</p>
 
 ## Table of Contents
 
