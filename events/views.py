@@ -12,12 +12,13 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
 def home(request):
-    featured_events = Event.objects.order_by('start_datetime')
+    all_events = Event.objects.order_by('start_datetime')
+    featured_events = all_events[:3]
     organiser_events = []
     user_role = None
     sold_out_event_ids = []
 
-    for event in featured_events:
+    for event in all_events:
         confirmed_bookings = event.bookings.filter(status="confirmed").count()
         if confirmed_bookings >= event.capacity:
             sold_out_event_ids.append(event.id)
