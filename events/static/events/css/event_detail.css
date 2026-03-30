@@ -270,49 +270,79 @@
 }
 
 .modal-overlay {
-    display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.68);
-    z-index: 2000;
+    background: rgba(0, 0, 0, 0.65);
+    display: none;
     align-items: center;
     justify-content: center;
+    z-index: 9999;
     padding: 1rem;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
 }
 
 .modal-box {
-    width: min(100%, 360px);
-    background: #ffffff;
-    color: #111111;
-    border-radius: 18px;
-    padding: 1.5rem;
+    width: min(100%, 430px);
+    padding: 2rem 1.8rem;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: linear-gradient(
+        135deg,
+        rgba(38, 20, 68, 0.96),
+        rgba(76, 13, 13, 0.92)
+    );
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
     text-align: center;
 }
 
 .modal-box p {
-    margin: 0 0 1rem;
+    margin: 0 0 1.4rem;
+    color: #ffffff;
+    font-size: 1rem;
+    line-height: 1.6;
     font-weight: 600;
+}
+
+.modal-box form {
+    margin-bottom: 0.85rem;
 }
 
 .modal-delete-btn,
 .modal-cancel-btn {
-    width: 100%;
-    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 180px;
+    min-height: 46px;
+    padding: 0.8rem 1.5rem;
     border-radius: 999px;
-    border: none;
-    font-weight: 700;
+    font-size: 0.92rem;
+    font-weight: 800;
     cursor: pointer;
+    transition: all 0.25s ease;
 }
 
 .modal-delete-btn {
-    background: #111111;
-    color: #ffffff;
-    margin-bottom: 0.8rem;
+    border: none;
+    background: #ffffff;
+    color: #8b0000;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+.modal-delete-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.24);
 }
 
 .modal-cancel-btn {
-    background: #ececec;
-    color: #111111;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+}
+
+.modal-cancel-btn:hover {
+    background: rgba(255, 255, 255, 0.14);
 }
 
 @media (max-width: 900px) {
