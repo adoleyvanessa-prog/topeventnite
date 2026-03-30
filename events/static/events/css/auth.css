@@ -72,15 +72,15 @@
 .auth-card-inner {
     width: min(100%, 520px);
     margin: 0 auto;
-    padding: 0.8rem 0 0.4rem;
+    padding: 1.2rem 0 0.6rem;
 }
 
 .auth-heading {
-    margin: 0 0 1.6rem;
+    margin: 0 0 0.8rem;
     text-align: center;
-    font-size: 1.25rem;
-    line-height: 1.4;
-    font-weight: 700;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1.1;
+    font-weight: 800;
     color: #ffffff;
 }
 
@@ -92,10 +92,10 @@
 
 .auth-subtext {
     text-align: center;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: rgba(255,255,255,0.75);
-    margin-top: -0.6rem;
-    margin-bottom: 1.6rem;
+    margin-top: 0;
+    margin-bottom: 1.8rem;
 }
 
 .form-row {
@@ -280,6 +280,6 @@
     }
 
     .auth-heading {
-        font-size: 1.08rem;
+        font-size: 1.8rem;
     }
 }
