@@ -5,6 +5,12 @@
             <span class="brand-text">TopEventNite</span>
         </a>
 
+        <button class="nav-toggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
         <div class="nav-links">
             <a href="{% url 'home' %}">Home</a>
 
@@ -25,3 +31,14 @@
         </div>
     </nav>
 </header>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".nav-toggle");
+    const nav = document.querySelector(".nav-links");
+
+    toggle.addEventListener("click", () => {
+        nav.classList.toggle("nav-open");
+    });
+});
+</script>
