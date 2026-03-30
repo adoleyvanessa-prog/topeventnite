@@ -1,33 +1,53 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Booking Confirmed | TopEventNite</title>
-</head>
-<body>
 
-<h1>Booking Confirmed!</h1>
+{% block title %}Booking Confirmed | TopEventNite{% endblock %}
 
-<p>You have successfully booked a ticket for:</p>
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'events/css/booking_confirmation.css' %}">
+{% endblock %}
 
-<h2>{{ booking.event.title }}</h2>
+{% block content %}
 
-<p><strong>Date:</strong> {{ booking.event.start_datetime }}</p>
-<p><strong>Location:</strong> {{ booking.event.location }}</p>
+<div class="confirmation-page">
 
-<p><strong>Your Booking Reference:</strong></p>
+  <!-- 🔥 Pill header -->
+  <div class="page-pill">
+    <h1>Booking Confirmed</h1>
+  </div>
 
-<h2>{{ booking.booking_reference }}</h2>
+  <!-- 🎟️ Card -->
+  <div class="confirmation-card">
 
-<p>Please keep this reference for entry to the event.</p>
+    <p class="success-text">Your ticket has been successfully booked 🎉</p>
 
-<p>
-<a href="{% url 'my_bookings' %}">View My Bookings</a>
-</p>
+    <div class="event-info">
+      <h2>{{ booking.event.title }}</h2>
 
-<p>
-<a href="{% url 'event_list' %}">Browse More Events</a>
-</p>
+      <p><strong>Date:</strong> {{ booking.event.start_datetime }}</p>
+      <p><strong>Location:</strong> {{ booking.event.location }}</p>
+    </div>
 
-</body>
-</html>
+    <div class="reference-box">
+      <p>Booking Reference</p>
+      <h3>{{ booking.booking_reference }}</h3>
+    </div>
+
+    <p class="note">
+      Please keep this reference safe for entry to the event.
+    </p>
+
+    <div class="confirmation-actions">
+      <a href="{% url 'my_bookings' %}" class="primary-btn">
+        View My Bookings
+      </a>
+
+      <a href="{% url 'event_list' %}" class="secondary-link">
+        Browse More Events
+      </a>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
