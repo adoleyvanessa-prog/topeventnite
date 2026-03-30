@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 
+# These are all the URL routes for the events app.
 urlpatterns = [
     path('', views.home, name='home'),
 
