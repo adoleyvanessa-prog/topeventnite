@@ -58,8 +58,7 @@ TopEventNite{% endblock %} {% block extra_css %}
           />
           {% else %}
           <div class="event-card-image event-card-image-placeholder"></div>
-          {% endif %}
-          {% if event.id in sold_out_event_ids %}
+          {% endif %} {% if event.id in sold_out_event_ids %}
           <div class="sold-out-badge">Sold Out</div>
           {% endif %}
           <div class="event-card-overlay"></div>
@@ -102,8 +101,7 @@ TopEventNite{% endblock %} {% block extra_css %}
           />
           {% else %}
           <div class="event-card-image event-card-image-placeholder"></div>
-          {% endif %}
-          {% if event.id in sold_out_event_ids %}
+          {% endif %} {% if event.id in sold_out_event_ids %}
           <div class="sold-out-badge">Sold Out</div>
           {% endif %}
 
@@ -125,6 +123,11 @@ TopEventNite{% endblock %} {% block extra_css %}
           </div>
         </article>
         {% endfor %}
+      </div>
+      <div class="view-all-wrap">
+        <a href="{% url 'event_list' %}" class="primary-btn">
+          Browse All Events
+        </a>
       </div>
       {% else %}
       <div class="empty-state">
