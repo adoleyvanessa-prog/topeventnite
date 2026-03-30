@@ -44,6 +44,21 @@ class Event(models.Model):
     def __str__(self):
         return self.title
 
+    @property
+    def confirmed_bookings_count(self):
+        return self.bookings.filter(
+            payment_status="paid",
+            status="confirmed"
+        ).count()
+
+    @property
+    def remaining_spots(self):
+        return max(self.capacity - self.confirmed_bookings_count, 0)
+
+    @property
+    def is_sold_out(self):
+        return self.remaining_spots <= 0
+
 
 class Booking(models.Model):
     PAYMENT_STATUS_CHOICES = [
