@@ -89,6 +89,14 @@ def logout_view(request):
     return redirect("home")
 
 
+def about_page(request):
+    return render(request, "events/about.html")
+
+
+def contact_page(request):
+    return render(request, "events/contact.html")
+
+
 def event_list(request):
     search_query = request.GET.get("q", "").strip()
     location_query = request.GET.get("location", "").strip()

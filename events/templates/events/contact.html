@@ -1,0 +1,47 @@
+{% extends 'events/base.html' %}
+{% load static %}
+
+{% block title %}Contact | TopEventNite{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'events/css/info_pages.css' %}">
+{% endblock %}
+
+{% block body_class %}info-page{% endblock %}
+
+{% block content %}
+<div class="site-shell info-shell">
+    <main class="info-main">
+        <div class="section-title-pill">Contact</div>
+
+        <section class="info-card">
+            <div class="info-card-inner">
+                <h1>Get in touch</h1>
+                <p class="info-lead">
+                    Have a question about an event, booking, or using the platform? Reach out below.
+                </p>
+
+                <div class="contact-grid">
+                    <div class="info-block">
+                        <h2>Email</h2>
+                        <p>hello@topeventnite.com</p>
+                    </div>
+
+                    <div class="info-block">
+                        <h2>Support</h2>
+                        <p>Monday to Friday, 9:00 AM – 5:00 PM</p>
+                    </div>
+
+                    <div class="info-block info-block-full">
+                        <h2>Follow us</h2>
+                        <p>
+                            Stay updated with new events, announcements, and featured nights through
+                            our social channels.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+{% endblock %}

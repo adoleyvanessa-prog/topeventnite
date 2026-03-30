@@ -1,27 +1,27 @@
 <header class="site-header">
-  <nav class="main-nav">
-    <a href="{% url 'home' %}" class="brand">
-      <i class="fa-solid fa-ticket brand-icon"></i>
-      <span class="brand-text">TopEventNite</span>
-    </a>
+    <nav class="main-nav">
+        <a href="{% url 'home' %}" class="brand">
+            <i class="fa-solid fa-ticket brand-icon"></i>
+            <span class="brand-text">TopEventNite</span>
+        </a>
 
-    <div class="nav-links">
-      <a href="{% url 'home' %}">Home</a>
+        <div class="nav-links">
+            <a href="{% url 'home' %}">Home</a>
 
-      {% if user.is_authenticated %}
-      <a href="{% url 'event_list' %}">Events</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'event_list' %}">Events</a>
 
-      {% if user.profile.role == "attendee" %}
-      <a href="{% url 'my_bookings' %}">My Bookings</a>
-      {% elif user.profile.role == "organiser" %}
-      <a href="{% url 'create_event' %}">Create Event</a>
-      {% endif %}
+                {% if user.profile.role == "attendee" %}
+                    <a href="{% url 'my_bookings' %}">My Bookings</a>
+                {% elif user.profile.role == "organiser" %}
+                    <a href="{% url 'create_event' %}">Create Event</a>
+                {% endif %}
 
-      <a href="{% url 'logout' %}">Logout</a>
-      {% else %}
-      <a href="#">About</a>
-      <a href="{% url 'login' %}">Login/Register</a>
-      {% endif %}
-    </div>
-  </nav>
+                <a href="{% url 'logout' %}">Logout</a>
+            {% else %}
+                <a href="{% url 'about' %}">About</a>
+                <a href="{% url 'login' %}">Login/Register</a>
+            {% endif %}
+        </div>
+    </nav>
 </header>

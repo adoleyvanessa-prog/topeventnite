@@ -1,0 +1,55 @@
+{% extends 'events/base.html' %}
+{% load static %}
+
+{% block title %}About | TopEventNite{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'events/css/info_pages.css' %}">
+{% endblock %}
+
+{% block body_class %}info-page{% endblock %}
+
+{% block content %}
+<div class="site-shell info-shell">
+    <main class="info-main">
+        <div class="section-title-pill">About</div>
+
+        <section class="info-card">
+            <div class="info-card-inner">
+                <h1>About TopEventNite</h1>
+                <p class="info-lead">
+                    TopEventNite is an event booking platform designed to help users discover,
+                    book, and manage unforgettable experiences all in one place.
+                </p>
+
+                <div class="info-grid">
+                    <div class="info-block">
+                        <h2>For attendees</h2>
+                        <p>
+                            Users can browse available events, view event details, and book tickets
+                            for experiences that match their interests.
+                        </p>
+                    </div>
+
+                    <div class="info-block">
+                        <h2>For organisers</h2>
+                        <p>
+                            Organisers can create events, manage listings, update event information,
+                            and keep track of bookings through a simple dashboard flow.
+                        </p>
+                    </div>
+
+                    <div class="info-block info-block-full">
+                        <h2>Platform features</h2>
+                        <p>
+                            The platform includes role-based access, event creation, booking
+                            management, payment integration, and responsive design to provide a
+                            smooth experience across devices.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+{% endblock %}
