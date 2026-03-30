@@ -1,55 +1,65 @@
-{% extends 'events/base.html' %} {% load static %} {% block title %}Login |
-TopEventNite{% endblock %} {% block extra_css %}
-<link rel="stylesheet" href="{% static 'events/css/auth.css' %}" />
-{% endblock %} {% block body_class %}auth-page{% endblock %} {% block content %}
+{% extends 'events/base.html' %}
+{% load static %}
+
+{% block title %}Login | TopEventNite{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'events/css/auth.css' %}">
+{% endblock %}
+
+{% block body_class %}auth-page{% endblock %}
+
+{% block content %}
 <div class="site-shell auth-shell">
-  <main class="auth-main">
-    <div class="section-title-pill">Login</div>
+    <main class="auth-main">
+        <div class="section-title-pill">Login</div>
 
-    <section class="auth-card">
-      <div class="auth-card-inner">
-        <div class="auth-icon-badge">
-          <i class="fa-solid fa-ticket"></i>
+        <!-- Login card -->
+        <section class="auth-card">
+            <div class="auth-card-inner">
+                <div class="auth-icon-badge">
+                    <i class="fa-solid fa-ticket"></i>
+                </div>
+
+                <h2 class="auth-heading">Welcome back</h2>
+
+                <p class="auth-subtext">
+                    Log in to manage bookings and explore events near you.
+                </p>
+
+                <!-- Login error message -->
+                {% if error_message %}
+                    <div class="auth-alert">{{ error_message }}</div>
+                {% endif %}
+
+                <form method="POST" class="auth-form" novalidate>
+                    {% csrf_token %}
+
+                    <div class="form-row">
+                        <label for="username">Username:</label>
+                        <input type="text" name="username" id="username" required>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="password">Password:</label>
+                        <input type="password" name="password" id="password" required>
+                    </div>
+
+                    <div class="auth-button-wrap">
+                        <button type="submit" class="auth-submit-btn">Login</button>
+                    </div>
+                </form>
+
+                <div class="auth-links">
+                    <p>Don’t have an account?</p>
+                    <a href="{% url 'register' %}">Register</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="auth-back-wrap">
+            <a href="{% url 'home' %}" class="auth-back-link">Back to home</a>
         </div>
-
-        <h2 class="auth-heading">Welcome back</h2>
-
-        <p class="auth-subtext">
-          Log in to manage bookings and explore events near you.
-        </p>
-
-        {% if error_message %}
-        <div class="auth-alert">{{ error_message }}</div>
-        {% endif %}
-
-        <form method="POST" class="auth-form" novalidate>
-          {% csrf_token %}
-
-          <div class="form-row">
-            <label for="username">Username:</label>
-            <input type="text" name="username" id="username" required />
-          </div>
-
-          <div class="form-row">
-            <label for="password">Password:</label>
-            <input type="password" name="password" id="password" required />
-          </div>
-
-          <div class="auth-button-wrap">
-            <button type="submit" class="auth-submit-btn">Login</button>
-          </div>
-        </form>
-
-        <div class="auth-links">
-          <p>Don’t have an account?</p>
-          <a href="{% url 'register' %}">Register</a>
-        </div>
-      </div>
-    </section>
-
-    <div class="auth-back-wrap">
-      <a href="{% url 'home' %}" class="auth-back-link">Back to home</a>
-    </div>
-  </main>
+    </main>
 </div>
 {% endblock %}

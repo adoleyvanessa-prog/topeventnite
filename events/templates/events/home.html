@@ -11,7 +11,9 @@
 
 {% block content %}
 <div class="site-shell">
-  <section class="hero-section">
+    <!-- Homepage wrapper -->
+      <!-- Hero section with looping background video -->
+    <section class="hero-section">
     <video class="hero-video" autoplay muted loop playsinline>
       <source
         src="{% static 'events/videos/background_vid.MP4' %}"
@@ -51,7 +53,8 @@
     </div>
   </section>
 
-  <main class="home-main">
+      <!-- Main homepage content changes depending on the user role -->
+    <main class="home-main">
     {% if user.is_authenticated and user_role == "organiser" %}
     <section class="events-section">
       {% if organiser_events %}

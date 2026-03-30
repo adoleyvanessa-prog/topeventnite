@@ -1,16 +1,19 @@
 <header class="site-header">
     <nav class="main-nav">
+        <!-- Site logo / brand link -->
         <a href="{% url 'home' %}" class="brand">
             <i class="fa-solid fa-ticket brand-icon"></i>
             <span class="brand-text">TopEventNite</span>
         </a>
 
+        <!-- Mobile hamburger button -->
         <button class="nav-toggle" aria-label="Toggle menu">
             <span></span>
             <span></span>
             <span></span>
         </button>
 
+        <!-- Navigation links change depending on whether the user is logged in and their role -->
         <div class="nav-links">
             <a href="{% url 'home' %}">Home</a>
 
@@ -37,21 +40,26 @@ document.addEventListener("DOMContentLoaded", function () {
     const toggle = document.querySelector(".nav-toggle");
     const nav = document.querySelector(".nav-links");
 
+    // Stop if the nav elements are not found
     if (!toggle || !nav) return;
 
+    // Open / close the mobile menu when the hamburger is clicked
     toggle.addEventListener("click", function (e) {
         e.stopPropagation();
         nav.classList.toggle("nav-open");
     });
 
+    // Prevent clicks inside the menu from bubbling up and closing it
     nav.addEventListener("click", function (e) {
         e.stopPropagation();
     });
 
+    // Close the menu when clicking anywhere outside it
     document.addEventListener("click", function () {
         nav.classList.remove("nav-open");
     });
 
+    // Reset the mobile menu if the screen becomes wider again
     window.addEventListener("resize", function () {
         if (window.innerWidth > 700) {
             nav.classList.remove("nav-open");

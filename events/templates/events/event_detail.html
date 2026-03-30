@@ -11,11 +11,14 @@
 
 {% block content %}
 <div class="site-shell event-detail-shell">
+    <!-- Event details page wrapper -->
     <main class="event-detail-main">
         <div class="section-title-pill">Event Details</div>
 
+                <!-- Main event details card -->
         <section class="event-detail-card">
             <div class="event-detail-grid">
+                                <!-- Left side: event image and availability -->
                 <div class="event-image-column">
                     {% if event.event_image %}
                         <img
@@ -36,6 +39,7 @@
                     </div>
                 </div>
 
+                                <!-- Right side: event information and actions -->
                 <div class="event-info-column">
                     <h1 class="event-title">{{ event.title }}</h1>
 

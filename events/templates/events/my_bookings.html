@@ -11,9 +11,11 @@
 
 {% block content %}
 <div class="site-shell my-bookings-shell">
+    <!-- My bookings page wrapper -->
     <main class="my-bookings-main">
         <div class="section-title-pill">My Bookings</div>
 
+                <!-- Toast messages shown after actions like cancelling a booking -->
         {% if messages %}
         <div id="toast-container">
             {% for message in messages %}
@@ -77,6 +79,7 @@
     </main>
 </div>
 
+<!-- Cancel booking confirmation modal -->
 <div id="cancelModal" class="modal">
     <div class="modal-content">
         <h2>Cancel Booking</h2>
