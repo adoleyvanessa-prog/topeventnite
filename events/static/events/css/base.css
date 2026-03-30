@@ -80,6 +80,7 @@ input {
     justify-content: space-between;
     gap: 1rem;
     padding: 0.75rem 1.2rem;
+    position: relative;
 }
 
 .brand {
@@ -187,6 +188,7 @@ input {
 @media (max-width: 700px) {
     .main-nav {
         min-height: 74px;
+        overflow: visible;
     }
 
     .nav-toggle {
@@ -198,9 +200,9 @@ input {
         display: none;
         position: absolute;
         top: 100%;
-        left: 1rem;
-        right: 1rem;
-        width: auto;
+        left: 0;
+        right: 0;
+        width: 100%;
         padding: 1rem;
         flex-direction: column;
         align-items: stretch;
@@ -208,11 +210,12 @@ input {
         margin-left: 0;
         border-radius: 0 0 18px 18px;
         background: rgba(8, 8, 12, 0.97);
-        border: 1px solid rgba(255, 255, 255, 0.10);
-        border-top: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.10);
         box-shadow: 0 18px 34px rgba(0, 0, 0, 0.28);
         backdrop-filter: blur(14px);
         -webkit-backdrop-filter: blur(14px);
+        box-sizing: border-box;
+        overflow: hidden;
     }
 
     .nav-links.nav-open {
