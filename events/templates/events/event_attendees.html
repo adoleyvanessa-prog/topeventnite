@@ -1,45 +1,72 @@
+{% extends 'events/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Attendees | TopEventNite</title>
-</head>
-<body>
 
-<h1>Organiser's Event Bookings</h1>
+{% block title %}Event Bookings | TopEventNite{% endblock %}
 
-<h2>{{ event.title }}</h2>
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'events/css/event_attendees.css' %}">
+{% endblock %}
 
-<p>
-<strong>Date:</strong> {{ event.start_datetime }} <br>
-<strong>Location:</strong> {{ event.location }} <br>
-<strong>Venue:</strong> {{ event.venue }}
-</p>
+{% block body_class %}event-attendees-page{% endblock %}
 
-<table border="1" cellpadding="10">
-<tr>
-<th>Attendee Name</th>
-<th>Booking Reference</th>
-<th>Email</th>
-</tr>
+{% block content %}
+<div class="site-shell event-attendees-shell">
+    <main class="event-attendees-main">
+        <div class="section-title-pill">Event Bookings</div>
 
-{% for booking in bookings %}
-<tr>
-<td>{{ booking.full_name }}</td>
-<td>{{ booking.booking_reference }}</td>
-<td>{{ booking.email }}</td>
-</tr>
-{% empty %}
-<tr>
-<td colspan="3">No bookings yet</td>
-</tr>
-{% endfor %}
+        <section class="event-attendees-card">
+            <div class="event-attendees-card-inner">
+                <div class="event-attendees-header">
+                    <div class="event-summary">
+                        <h1>{{ event.title }}</h1>
+                        <p class="event-summary-subtext">
+                            View all confirmed attendee details for this event.
+                        </p>
 
-</table>
+                        <div class="event-summary-meta">
+                            <p><span>Date:</span> {{ event.start_datetime|date:"l jS F Y" }}</p>
+                            <p><span>Time:</span> {{ event.start_datetime|time:"g:iA" }}</p>
+                            <p><span>Location:</span> {{ event.location }}</p>
+                            <p><span>Venue:</span> {{ event.venue }}</p>
+                        </div>
+                    </div>
 
-<br>
+                    <div class="booking-count-box">
+                        <span class="booking-count-number">{{ bookings|length }}</span>
+                        <span class="booking-count-label">Bookings</span>
+                    </div>
+                </div>
 
-<a href="{% url 'event_detail' event.id %}">Back to Event</a>
+                <div class="attendees-table-wrap">
+                    <table class="attendees-table">
+                        <thead>
+                            <tr>
+                                <th>Attendee Name</th>
+                                <th>Booking Reference</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for booking in bookings %}
+                                <tr>
+                                    <td>{{ booking.full_name }}</td>
+                                    <td>{{ booking.booking_reference }}</td>
+                                    <td>{{ booking.email }}</td>
+                                </tr>
+                            {% empty %}
+                                <tr>
+                                    <td colspan="3" class="empty-state-cell">No bookings yet</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
 
-</body>
-</html>
+                <div class="event-attendees-actions">
+                    <a href="{% url 'event_detail' event.id %}" class="secondary-link">Back to Event</a>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+{% endblock %}

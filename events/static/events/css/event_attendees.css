@@ -1,0 +1,227 @@
+.event-attendees-page {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top left, rgba(73, 34, 140, 0.45), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(162, 22, 22, 0.35), transparent 30%),
+        linear-gradient(90deg, #07002f 0%, #18003f 45%, #4b0000 100%);
+}
+
+.event-attendees-shell {
+    width: 100%;
+}
+
+.event-attendees-main {
+    width: 100%;
+    padding: 1.6rem 0 3rem;
+}
+
+.section-title-pill {
+    display: inline-flex;
+    align-items: center;
+    min-width: 300px;
+    min-height: 52px;
+    padding: 0.8rem 2.2rem;
+    margin: 0 0 1.6rem 0;
+    border-radius: 0 999px 999px 0;
+    background: #f2f2f2;
+    color: #111111;
+    font-size: 1rem;
+    font-weight: 800;
+    box-sizing: border-box;
+}
+
+.event-attendees-card {
+    width: min(100%, 1120px);
+    margin: 0 auto;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 28px;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.11),
+        rgba(255, 255, 255, 0.06)
+    );
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.22);
+    overflow: hidden;
+}
+
+.event-attendees-card-inner {
+    padding: 2rem 2rem 2.2rem;
+}
+
+.event-attendees-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    align-items: flex-start;
+    margin-bottom: 1.8rem;
+}
+
+.event-summary h1 {
+    margin: 0 0 0.45rem;
+    color: #ffffff;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1.08;
+    font-weight: 800;
+}
+
+.event-summary-subtext {
+    margin: 0 0 1rem;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.98rem;
+    line-height: 1.5;
+}
+
+.event-summary-meta {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem 1.5rem;
+}
+
+.event-summary-meta p {
+    margin: 0;
+    color: #ffffff;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.event-summary-meta span {
+    font-weight: 800;
+}
+
+.booking-count-box {
+    min-width: 145px;
+    padding: 1rem 1.2rem;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+}
+
+.booking-count-number {
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.booking-count-label {
+    margin-top: 0.35rem;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.attendees-table-wrap {
+    overflow-x: auto;
+    border-radius: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.attendees-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 720px;
+}
+
+.attendees-table thead {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.attendees-table th,
+.attendees-table td {
+    text-align: left;
+    padding: 1rem 1.1rem;
+    color: #ffffff;
+    font-size: 0.95rem;
+}
+
+.attendees-table th {
+    font-weight: 800;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.attendees-table td {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.attendees-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.attendees-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.empty-state-cell {
+    text-align: center !important;
+    padding: 2rem 1rem !important;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.78) !important;
+}
+
+.event-attendees-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.6rem;
+}
+
+.event-attendees-actions .secondary-link {
+    min-width: 170px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 900px) {
+    .event-attendees-card {
+        width: min(100%, calc(100% - 2rem));
+    }
+
+    .event-attendees-card-inner {
+        padding: 1.4rem 1.2rem 1.8rem;
+    }
+
+    .event-attendees-header {
+        flex-direction: column;
+    }
+
+    .booking-count-box {
+        align-self: flex-start;
+        min-width: 130px;
+    }
+
+    .event-summary-meta {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .event-attendees-main {
+        padding: 1.2rem 0 2.5rem;
+    }
+
+    .section-title-pill {
+        min-width: 220px;
+        min-height: 48px;
+        font-size: 0.9rem;
+        padding: 0.75rem 1.7rem;
+    }
+
+    .event-summary h1 {
+        font-size: 2rem;
+    }
+
+    .event-summary-subtext,
+    .event-summary-meta p,
+    .attendees-table th,
+    .attendees-table td {
+        font-size: 0.9rem;
+    }
+}
