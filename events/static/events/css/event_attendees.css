@@ -18,7 +18,7 @@
 .section-title-pill {
     display: inline-flex;
     align-items: center;
-    min-width: 300px;
+    min-width: 250px;
     min-height: 52px;
     padding: 0.8rem 2.2rem;
     margin: 0 0 1.6rem 0;
