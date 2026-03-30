@@ -40,11 +40,11 @@
                     <h1 class="event-title">{{ event.title }}</h1>
 
                     <div class="event-meta-list">
-                        <p><i class="fa-solid fa-calendar"></i><span>Date:</span> {{ event.start_datetime|date:"l jS F Y" }}</p>
-                        <p><i class="fa-solid fa-clock"></i><span>Time:</span> {{ event.start_datetime|time:"g:iA" }}</p>
-                        <p><i class="fa-solid fa-map-marker-alt"></i><span>Location:</span> {{ event.location }}</p>
-                        <p><i class="fa-solid fa-building"></i><span>Venue:</span> {{ event.venue }}</p>
-                        <p><i class="fa-solid fa-pound-sign"></i><span>Price:</span> £{{ event.price }}</p>
+                        <p><span>Date:</span> {{ event.start_datetime|date:"l jS F Y" }}</p>
+                        <p><span>Time:</span> {{ event.start_datetime|time:"g:iA" }}</p>
+                        <p><span>Location:</span> {{ event.location }}</p>
+                        <p><span>Venue:</span> {{ event.venue }}</p>
+                        <p><span>Price:</span> £{{ event.price }}</p>
                     </div>
 
                     <div class="event-description">
