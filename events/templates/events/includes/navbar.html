@@ -37,8 +37,25 @@ document.addEventListener("DOMContentLoaded", function () {
     const toggle = document.querySelector(".nav-toggle");
     const nav = document.querySelector(".nav-links");
 
-    toggle.addEventListener("click", () => {
+    if (!toggle || !nav) return;
+
+    toggle.addEventListener("click", function (e) {
+        e.stopPropagation();
         nav.classList.toggle("nav-open");
+    });
+
+    nav.addEventListener("click", function (e) {
+        e.stopPropagation();
+    });
+
+    document.addEventListener("click", function () {
+        nav.classList.remove("nav-open");
+    });
+
+    window.addEventListener("resize", function () {
+        if (window.innerWidth > 700) {
+            nav.classList.remove("nav-open");
+        }
     });
 });
 </script>
