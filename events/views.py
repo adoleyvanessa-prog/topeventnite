@@ -90,8 +90,22 @@ def logout_view(request):
 
 
 def event_list(request):
-    events = Event.objects.all()
-    return render(request, 'events/event_list.html', {'events': events})
+    search_query = request.GET.get("q", "").strip()
+    location_query = request.GET.get("location", "").strip()
+
+    events = Event.objects.all().order_by("start_datetime")
+
+    if search_query:
+        events = events.filter(title__istartswith=search_query)
+
+    if location_query:
+        events = events.filter(location__icontains=location_query)
+
+    return render(request, 'events/event_list.html', {
+        'events': events,
+        'search_query': search_query,
+        'location_query': location_query,
+    })
 
 
 def event_detail(request, event_id):

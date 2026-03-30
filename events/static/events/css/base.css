@@ -64,16 +64,6 @@ input {
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
 }
 
-.nav-search input {
-    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-}
-
-.nav-search input:focus {
-    border-color: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.08);
-    background: rgba(255, 255, 255, 0.08);
-}
-
 .site-header {
     position: sticky;
     top: 0;
@@ -97,6 +87,7 @@ input {
     align-items: center;
     gap: 0.55rem;
     font-weight: 700;
+    flex-shrink: 0;
 }
 
 .brand-icon {
@@ -108,33 +99,13 @@ input {
     font-weight: 700;
 }
 
-.nav-search {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-}
-
-.nav-search input {
-    width: min(100%, 300px);
-    height: 34px;
-    border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.72);
-    background: rgba(255, 255, 255, 0.05);
-    color: #ffffff;
-    padding: 0 1rem;
-    outline: none;
-    font-size: 0.72rem;
-}
-
-.nav-search input::placeholder {
-    color: rgba(255, 255, 255, 0.72);
-}
-
 .nav-links {
     display: flex;
     align-items: center;
     gap: 1rem;
     flex-wrap: wrap;
+    margin-left: auto;
+    justify-content: flex-end;
 }
 
 .nav-links a {
@@ -201,10 +172,10 @@ input {
         flex-wrap: wrap;
     }
 
-    .nav-search {
-        order: 3;
+    .nav-links {
         width: 100%;
         justify-content: center;
+        margin-left: 0;
     }
 
     .site-footer {
