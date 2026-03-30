@@ -98,11 +98,17 @@ Make changes to your event details and keep everything up to date.
 </div>
 
 <div class="form-group">
-<label for="{{ form.event_image.id_for_label }}">Event Image</label>
-{{ form.event_image }}
-{% if form.event_image.errors %}
-<div class="field-error">{{ form.event_image.errors|striptags }}</div>
-{% endif %}
+    <label for="{{ form.event_image.id_for_label }}">Event Image</label>
+
+    {% if event.event_image %}
+        <p class="current-image-text">Current image uploaded</p>
+    {% endif %}
+
+    {{ form.event_image }}
+
+    {% if form.event_image.errors %}
+        <div class="field-error">{{ form.event_image.errors|striptags }}</div>
+    {% endif %}
 </div>
 </div>
 

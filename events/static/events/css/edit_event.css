@@ -120,6 +120,21 @@ font-size: 0.98rem;
 font-weight: 700;
 }
 
+.current-image-text {
+    margin: 0 0 0.65rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+}
+
+/* Hide Django's default current file + clear checkbox layout */
+.edit-event-form .form-group a,
+.edit-event-form .form-group input[type="checkbox"],
+.edit-event-form .form-group label[for$="-clear_id"],
+.edit-event-form .form-group .clearable-file-input,
+.edit-event-form .form-group br {
+    display: none;
+}
+
 .edit-event-form input,
 .edit-event-form textarea,
 .edit-event-form select {
