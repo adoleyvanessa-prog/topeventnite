@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'events/base.html' %}
 {% load static %}
 
 {% block title %}Booking Confirmed | TopEventNite{% endblock %}
@@ -7,47 +7,41 @@
 <link rel="stylesheet" href="{% static 'events/css/booking_confirmation.css' %}">
 {% endblock %}
 
+{% block body_class %}booking-confirmation-page{% endblock %}
+
 {% block content %}
-
 <div class="confirmation-page">
-
-  <!-- 🔥 Pill header -->
-  <div class="page-pill">
-    <h1>Booking Confirmed</h1>
-  </div>
-
-  <!-- 🎟️ Card -->
-  <div class="confirmation-card">
-
-    <p class="success-text">Your ticket has been successfully booked 🎉</p>
-
-    <div class="event-info">
-      <h2>{{ booking.event.title }}</h2>
-
-      <p><strong>Date:</strong> {{ booking.event.start_datetime }}</p>
-      <p><strong>Location:</strong> {{ booking.event.location }}</p>
+    <div class="page-pill">
+        <h1>Booking Confirmed</h1>
     </div>
 
-    <div class="reference-box">
-      <p>Booking Reference</p>
-      <h3>{{ booking.booking_reference }}</h3>
+    <div class="confirmation-card">
+        <p class="success-text">Your ticket has been successfully booked!</p>
+
+        <div class="event-info">
+            <h2>{{ booking.event.title }}</h2>
+            <p><strong>Date:</strong> {{ booking.event.start_datetime }}</p>
+            <p><strong>Location:</strong> {{ booking.event.location }}</p>
+        </div>
+
+        <div class="reference-box">
+            <p>Booking Reference</p>
+            <h3>{{ booking.booking_reference }}</h3>
+        </div>
+
+        <p class="note">
+            Please keep this reference safe for entry to the event.
+        </p>
+
+        <div class="confirmation-actions">
+            <a href="{% url 'my_bookings' %}" class="primary-btn">
+                View My Bookings
+            </a>
+
+            <a href="{% url 'event_list' %}" class="secondary-link">
+                Browse More Events
+            </a>
+        </div>
     </div>
-
-    <p class="note">
-      Please keep this reference safe for entry to the event.
-    </p>
-
-    <div class="confirmation-actions">
-      <a href="{% url 'my_bookings' %}" class="primary-btn">
-        View My Bookings
-      </a>
-
-      <a href="{% url 'event_list' %}" class="secondary-link">
-        Browse More Events
-      </a>
-    </div>
-
-  </div>
 </div>
-
 {% endblock %}
